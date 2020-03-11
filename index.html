@@ -204,82 +204,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://farukcan.net/Yazilim/2020/02/asal-sayi-dogrulama/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve edebiyat üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Yazilim/2020/02/asal-sayi-dogrulama/" class="post-title-link" itemprop="url">Asal sayı doğrulama</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 27-02-2020 15:23:14" itemprop="dateCreated datePublished" datetime="2020-02-27T15:23:14+03:00">27-02-2020</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 11-03-2020 22:31:11" itemprop="dateModified" datetime="2020-03-11T22:31:11+03:00">11-03-2020</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="/html/uploads/2015/05/prime-numbers-02.jpg"><img src="/html/uploads/2015/05/prime-numbers-02.jpg" alt="prime-numbers-02" width="446" height="250" class="alignnone size-full wp-image-208" /></a>Bir sayının asallığını en hızlı şekilde doğrulayan fonksiyondur</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (<span class="built_in">isNaN</span>(n) || !<span class="built_in">isFinite</span>(n) || n%<span class="number">1</span> || n&amp;lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">2</span>);</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">3</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">3</span>);</span><br><span class="line"> <span class="keyword">var</span> m=<span class="built_in">Math</span>.sqrt(n);</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">5</span>;i&amp;lt;=m;i+=<span class="number">6</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n%i==<span class="number">0</span>)     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (n%(i+<span class="number">2</span>)==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
     <link itemprop="mainEntityOfPage" href="https://farukcan.net/Psikoloji/2018/12/irade-gucu-uzerine-arastirmalar-ve-12-yontem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1071,6 +995,82 @@ git init
 
       
           <p>Dünya bizim etrafımızda dönmüyor. Aksine biz dünya ile beraber döne döne sürüklünüyoruz. Yolun nere gittiğini kimse bilmiyor. Kimse,bir kelebeğin kanat çırpmasının, dünyanın diğer ucunda fırtınalar yarattığını gözlemleyemedi. Kimse geleceği bilmiyor. Sadece <em>geleceğini</em> biliyor. Doğrusu, deterministik bir evrende mi yaşıyoruz, onu da bilmiyoruz. Aslında öğrenmek dediğimiz şey, sadece ne kadar çok şeyi bilmediğimizi öğrenmekten ibaret.</p>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
+    <link itemprop="mainEntityOfPage" href="https://farukcan.net/Felsefe/2016/12/doganin-kanunu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve edebiyat üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Felsefe/2016/12/doganin-kanunu/" class="post-title-link" itemprop="url">Doğanın kanunu</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 05-12-2016 14:52:52" itemprop="dateCreated datePublished" datetime="2016-12-05T14:52:52+03:00">05-12-2016</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Düzenleme</span>
+                <time title="Değiştirildi: 07-03-2020 15:12:34" itemprop="dateModified" datetime="2020-03-07T15:12:34+03:00">07-03-2020</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/kategoriler/Felsefe/" itemprop="url" rel="index"><span itemprop="name">Felsefe</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Güçlü olan hayatta kalır ve insan doğaya hükmetmelidir. Bu laflar artık hezeyandan ibaret. Elimizde iki gerçek var. Birincisi, “uyumlu olan hayatta kalır”, güçlü olan değil. Karıncalar güçlü mü? Hayır, uyum ve birliktelik içerisindeler. Dinozorlar da en güçlü hayvanlardı, ama yok oldular. Çünkü uyumsuzlardı. Biz insanlarda ağaçlar,bitkiler ve hayvanlarla uyum içerisinde olduğumuz için hayattayız. Biz ağaçların meyvesini alıp, onların tohumunu ekeriz. İki tarafında kârlı olduğu ilişkidir. İkincisi, insan doğaya hükmedemez, doğaya uyum sağlar. Doğayı, asla yok edemeyeceğiz. Ağaçları kestiğimiz, ozon tabakasını deldiğimiz ve nükleer atık bıraktığımız için o bizi yok edecek. Ve telef olmuş türümüzün mezarının üstünde yeni çiçekler açıp, yeni canlılar gezinecek. (26/7/16)</p>
 
       
     </div>

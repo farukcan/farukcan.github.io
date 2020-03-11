@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Asal sayı doğrulama</title>
-    <url>//Yazilim/2020/02/asal-sayi-dogrulama/</url>
-    <content><![CDATA[<p><a href="/html/uploads/2015/05/prime-numbers-02.jpg"><img src="/html/uploads/2015/05/prime-numbers-02.jpg" alt="prime-numbers-02" width="446" height="250" class="alignnone size-full wp-image-208" /></a>Bir sayının asallığını en hızlı şekilde doğrulayan fonksiyondur</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (<span class="built_in">isNaN</span>(n) || !<span class="built_in">isFinite</span>(n) || n%<span class="number">1</span> || n&amp;lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">2</span>);</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">3</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">3</span>);</span><br><span class="line"> <span class="keyword">var</span> m=<span class="built_in">Math</span>.sqrt(n);</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">5</span>;i&amp;lt;=m;i+=<span class="number">6</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n%i==<span class="number">0</span>)     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (n%(i+<span class="number">2</span>)==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Yazılım</category>
-      </categories>
-      <tags>
-        <tag>yazılım</tag>
-        <tag>javascript</tag>
-        <tag>asal</tag>
-        <tag>matematik</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>İrade Gücü Üzerine Araştırmalar ve 12 Yöntem
 </title>
     <url>//Psikoloji/2018/12/irade-gucu-uzerine-arastirmalar-ve-12-yontem/</url>
@@ -653,6 +638,22 @@ olur.
       <tags>
         <tag>felsefe</tag>
         <tag>safsata</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Asal sayı doğrulama</title>
+    <url>//Yazilim/2015/10/asal-sayi-dogrulama/</url>
+    <content><![CDATA[<p><a href="/html/uploads/2015/05/prime-numbers-02.jpg"><img src="/html/uploads/2015/05/prime-numbers-02.jpg" alt="prime-numbers-02" width="446" height="250" class="alignnone size-full wp-image-208" /></a>Bir sayının asallığını en hızlı şekilde doğrulayan fonksiyondur</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (<span class="built_in">isNaN</span>(n) || !<span class="built_in">isFinite</span>(n) || n%<span class="number">1</span> || n&amp;lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">2</span>);</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">3</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">3</span>);</span><br><span class="line"> <span class="keyword">var</span> m=<span class="built_in">Math</span>.sqrt(n);</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">5</span>;i&amp;lt;=m;i+=<span class="number">6</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n%i==<span class="number">0</span>)     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (n%(i+<span class="number">2</span>)==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Yazılım</category>
+      </categories>
+      <tags>
+        <tag>yazılım</tag>
+        <tag>javascript</tag>
+        <tag>asal</tag>
+        <tag>matematik</tag>
       </tags>
   </entry>
   <entry>
