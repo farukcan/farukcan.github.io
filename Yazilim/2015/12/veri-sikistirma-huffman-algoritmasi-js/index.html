@@ -5,31 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/tr/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/tr/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/tr/images/favicon-16x16.png">
-  <link rel="mask-icon" href="/tr/images/favicon.ico" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
 
-<link rel="stylesheet" href="/tr/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/tr/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"farukcan.net","root":"/tr/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"farukcan.net","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Veri Sıkıştırma &amp;#8211; Huffman Algoritması &amp;#8211; JS">
-<meta property="og:url" content="http://farukcan.net/tr/Yazilim/2015/12/veri-sikistirma-huffman-algoritmasi-js/index.html">
+<meta property="og:url" content="https://farukcan.net/Yazilim/2015/12/veri-sikistirma-huffman-algoritmasi-js/index.html">
 <meta property="og:site_name" content="Faruk CAN">
 <meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021">
 <meta property="og:locale" content="tr_TR">
 <meta property="article:published_time" content="2015-12-14T15:17:24.000Z">
-<meta property="article:modified_time" content="2020-03-10T18:05:49.988Z">
+<meta property="article:modified_time" content="2020-03-11T19:30:52.620Z">
 <meta property="article:author" content="Faruk CAN">
 <meta property="article:tag" content="yazılım">
 <meta property="article:tag" content="javascript">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="algoritma">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://farukcan.net/tr/Yazilim/2015/12/veri-sikistirma-huffman-algoritmasi-js/">
+<link rel="canonical" href="https://farukcan.net/Yazilim/2015/12/veri-sikistirma-huffman-algoritmasi-js/">
 
 
 <script id="page-configurations">
@@ -100,7 +100,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/tr/" class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Faruk CAN</span>
         <span class="logo-line-after"><i></i></span>
@@ -123,42 +123,37 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/tr/" rel="section"><i class="fa fa-fw fa-home"></i>Ana Sayfa</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Ana Sayfa</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/tr/hakkimda/" rel="section"><i class="fa fa-fw fa-user"></i>Hakkımda</a>
+    <a href="/hakkimda/" rel="section"><i class="fa fa-fw fa-user"></i>Hakkımda</a>
 
   </li>
         <li class="menu-item menu-item-contact">
 
-    <a href="/tr/iletisim/" rel="section"><i class="fa fa-fw fa-address-book"></i>İletişim</a>
+    <a href="/iletisim/" rel="section"><i class="fa fa-fw fa-address-book"></i>İletişim</a>
 
   </li>
         <li class="menu-item menu-item-projects">
 
-    <a href="/tr/projelerim/" rel="section"><i class="fa fa-fw fa-tasks"></i>Projeler</a>
+    <a href="/projelerim/" rel="section"><i class="fa fa-fw fa-tasks"></i>Projeler</a>
 
   </li>
         <li class="menu-item menu-item-privacy_policy">
 
-    <a href="/tr/privacy-policy/" rel="section"><i class="fa fa-fw fa-file"></i>Gizlilik Politikası</a>
+    <a href="/privacy-policy/" rel="section"><i class="fa fa-fw fa-file"></i>Gizlilik Politikası</a>
 
   </li>
         <li class="menu-item menu-item-terms_conditions">
 
-    <a href="/tr/terms-conditions/" rel="section"><i class="fa fa-fw fa-clone"></i>Şartlar ve Durumlar</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/tr/kategoriler/" rel="section"><i class="fa fa-fw fa-th"></i>Kategoriler<span class="badge">6</span></a>
+    <a href="/terms-conditions/" rel="section"><i class="fa fa-fw fa-clone"></i>Şartlar ve Durumlar</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/tr/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">48</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">48</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -213,10 +208,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="tr">
-    <link itemprop="mainEntityOfPage" href="http://farukcan.net/tr/Yazilim/2015/12/veri-sikistirma-huffman-algoritmasi-js/">
+    <link itemprop="mainEntityOfPage" href="https://farukcan.net/Yazilim/2015/12/veri-sikistirma-huffman-algoritmasi-js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/tr/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Faruk CAN">
       <meta itemprop="description" content="Yazılım,felsefe ve edebiyat üzerine…">
     </span>
@@ -243,7 +238,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 10-03-2020 21:05:49" itemprop="dateModified" datetime="2020-03-10T21:05:49+03:00">10-03-2020</time>
+                <time title="Değiştirildi: 11-03-2020 22:30:52" itemprop="dateModified" datetime="2020-03-11T22:30:52+03:00">11-03-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,7 +246,7 @@
               </span>
               <span class="post-meta-item-text">Kategori</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/tr/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
                 </span>
             </span>
 
@@ -266,9 +261,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <iframe src="/tr/html/huffman.html" height=300 width="100%"></iframe>
+        <iframe src="/html/huffman.html" height=300 width="100%"></iframe>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> sozluk=[];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">print</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">	$(<span class="string">"#out"</span>).html($(<span class="string">"#out"</span>).html()+a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">oldObject</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> jQuery.extend(&#123;&#125;, oldObject);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#buton"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	calc();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">ust,left,right,level,frekans,char</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.ust = ust;</span><br><span class="line">  <span class="keyword">this</span>.left = left;</span><br><span class="line">  <span class="keyword">this</span>.right = right;</span><br><span class="line">  <span class="keyword">this</span>.level = level ;</span><br><span class="line">  <span class="keyword">this</span>.char = char;</span><br><span class="line">  <span class="keyword">this</span>.frekans = frekans;</span><br><span class="line">  <span class="keyword">this</span>.kod=<span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> text = $(<span class="string">"#tb"</span>).val();</span><br><span class="line">  <span class="keyword">var</span> array = text.split(<span class="string">""</span>);</span><br><span class="line">  <span class="keyword">var</span> chars = [];</span><br><span class="line">  <span class="keyword">var</span> frekans = [];</span><br><span class="line">  <span class="keyword">var</span> sorted = [];</span><br><span class="line"></span><br><span class="line">	$(<span class="string">"#out"</span>).html(<span class="string">"Toplam : "</span>+array.length+<span class="string">"&lt;h2&gt;Frekanslar&lt;/h2&gt;"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(k <span class="keyword">in</span> array)&#123;</span><br><span class="line">    <span class="keyword">if</span>(chars.indexOf(array[k]) == <span class="number">-1</span>)</span><br><span class="line">      chars.push(array[k]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(k <span class="keyword">in</span> array)&#123;</span><br><span class="line">      ch = chars.indexOf(array[k]);</span><br><span class="line">      <span class="keyword">if</span>(ch != <span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(frekans[ch])&#123;</span><br><span class="line">          frekans[ch]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          frekans[ch]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(i <span class="keyword">in</span> chars)&#123;</span><br><span class="line">    print(<span class="string">"'"</span>+chars[i]+<span class="string">"' "</span>+( frekans[i]/array.length)+<span class="string">"&lt;br&gt;"</span> );</span><br><span class="line">    sorted.push(&#123;</span><br><span class="line">    	<span class="string">"char"</span> : chars[i],</span><br><span class="line">      <span class="string">"frekans"</span> : (frekans[i]/array.length)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> levels=[[]];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;sorted.length;i++)&#123;</span><br><span class="line">  		levels[<span class="number">0</span>].push(<span class="keyword">new</span> Node(<span class="literal">false</span>,<span class="literal">false</span>,<span class="literal">false</span>,<span class="number">0</span>,sorted[i].frekans,sorted[i].char));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> level = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(levels[level].length&gt;<span class="number">2</span>)&#123;</span><br><span class="line"></span><br><span class="line">    levels[level].sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="built_in">parseFloat</span>(b.frekans) - <span class="built_in">parseFloat</span>(a.frekans);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">    level++;</span><br><span class="line">    levels.push([]);</span><br><span class="line"></span><br><span class="line">    i = levels[level<span class="number">-1</span>].length<span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    levels[level].push(<span class="keyword">new</span> Node(<span class="literal">false</span>,levels[level<span class="number">-1</span>][i<span class="number">-1</span>],levels[level<span class="number">-1</span>][i],level,(levels[level<span class="number">-1</span>][i<span class="number">-1</span>].frekans+levels[level<span class="number">-1</span>][i].frekans),<span class="string">"yok"</span>));</span><br><span class="line"></span><br><span class="line">    levels[level<span class="number">-1</span>][i<span class="number">-1</span>].ust = levels[level][levels[level].length<span class="number">-1</span>];</span><br><span class="line">    levels[level<span class="number">-1</span>][i].ust = levels[level][levels[level].length<span class="number">-1</span>];     </span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> j = levels[level<span class="number">-1</span>].length<span class="number">-3</span> ; j&gt;=<span class="number">0</span>;j--)&#123;</span><br><span class="line">      	levels[level].push(levels[level<span class="number">-1</span>][j]);</span><br><span class="line">        levels[level<span class="number">-1</span>][j].ust = levels[level][levels[level].length<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   levels[level].sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="built_in">parseFloat</span>(b.frekans) - <span class="built_in">parseFloat</span>(a.frekans);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  GenerateCode(levels[level][<span class="number">0</span>],<span class="string">"1"</span>);  </span><br><span class="line">  GenerateCode(levels[level][<span class="number">1</span>],<span class="string">"0"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  print(<span class="string">"&lt;h2&gt;Ağaç&lt;/h2&gt;"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  levels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  	print(<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">    e.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">l</span>)</span>&#123;</span><br><span class="line">    	print(<span class="built_in">Math</span>.round(l.frekans*<span class="number">100</span>)/<span class="number">100</span>+<span class="string">" | "</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"&lt;h2&gt;Kod&lt;/h2&gt;"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  levels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  	print(<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">    e.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">l</span>)</span>&#123;</span><br><span class="line">    	print(l.kod+<span class="string">" | "</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  sozluk=[];</span><br><span class="line"></span><br><span class="line">  print(<span class="string">"&lt;h2&gt;Kodlama&lt;/h2&gt;"</span>);</span><br><span class="line">      levels[<span class="number">0</span>].forEach(<span class="function"><span class="keyword">function</span>(<span class="params">l</span>)</span>&#123;</span><br><span class="line">    	print(l.char+<span class="string">" = "</span>+l.kod+<span class="string">" &lt;br&gt; "</span>);</span><br><span class="line">      sozluk.push(&#123;</span><br><span class="line">      	<span class="string">"char"</span> : l.char,</span><br><span class="line">        <span class="string">"kod"</span> : l.kod</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  print(<span class="string">"&lt;h2&gt;Encode&lt;/h2&gt;"</span>);</span><br><span class="line"></span><br><span class="line">  array.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  	print(encode(e));</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(levels);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GenerateCode</span>(<span class="params">node,kod</span>)</span>&#123;</span><br><span class="line">  	node.kod=kod;</span><br><span class="line">    <span class="keyword">if</span>(node.left)</span><br><span class="line">  		GenerateCode(node.left,<span class="string">"1"</span>+node.kod);  	</span><br><span class="line">    <span class="keyword">if</span>(node.right)</span><br><span class="line">    	GenerateCode(node.right,<span class="string">"0"</span>+node.kod);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">encode</span>(<span class="params">char</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(k <span class="keyword">in</span> sozluk)&#123;</span><br><span class="line">  	<span class="keyword">if</span>(sozluk[k].char==char)</span><br><span class="line">    	<span class="keyword">return</span> sozluk[k].kod;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"?"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
     </div>
 
     
@@ -278,21 +272,21 @@
   <div class="popular-posts-header">İlgili Gönderiler</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\tr\Yazilim\2016\04\3-tas-oyunu-icin-yapay-zeka\" rel="bookmark">3 taş oyunu için Yapay Zeka</a></div>
+      <div class="popular-posts-title"><a href="\Yazilim\2016\04\3-tas-oyunu-icin-yapay-zeka\" rel="bookmark">3 taş oyunu için Yapay Zeka</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\05\asal-sayi-dogrulama\" rel="bookmark">Asal sayı doğrulama</a></div>
+      <div class="popular-posts-title"><a href="\Yazilim\2020\02\asal-sayi-dogrulama\" rel="bookmark">Asal sayı doğrulama</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\08\bir-js-kodunun-sadece-6-farkli-karakter-ile-yazilmasi\" rel="bookmark">Bir JS Kodunun sadece 6 farklı karakter ile yazılması
+      <div class="popular-posts-title"><a href="\Yazilim\2015\08\bir-js-kodunun-sadece-6-farkli-karakter-ile-yazilmasi\" rel="bookmark">Bir JS Kodunun sadece 6 farklı karakter ile yazılması
 </a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\tr\Yazilim\2016\05\heap-tree-yigin-agaci-ve-js-kutuphanesi-kodlari\" rel="bookmark">Heap Tree (Yığın Ağacı) ve JS kütüphanesi kodları
+      <div class="popular-posts-title"><a href="\Yazilim\2016\05\heap-tree-yigin-agaci-ve-js-kutuphanesi-kodlari\" rel="bookmark">Heap Tree (Yığın Ağacı) ve JS kütüphanesi kodları
 </a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\08\html5-local-storage\" rel="bookmark">HTML5 Local Storage</a></div>
+      <div class="popular-posts-title"><a href="\Yazilim\2015\08\html5-local-storage\" rel="bookmark">HTML5 Local Storage</a></div>
     </li>
   </ul>
 
@@ -328,11 +322,11 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tr/etiketler/yazilim/" rel="tag"># yazılım</a>
-              <a href="/tr/etiketler/javascript/" rel="tag"># javascript</a>
-              <a href="/tr/etiketler/huffman/" rel="tag"># huffman</a>
-              <a href="/tr/etiketler/sikistirma/" rel="tag"># sıkıştırma</a>
-              <a href="/tr/etiketler/algoritma/" rel="tag"># algoritma</a>
+              <a href="/etiketler/yazilim/" rel="tag"># yazılım</a>
+              <a href="/etiketler/javascript/" rel="tag"># javascript</a>
+              <a href="/etiketler/huffman/" rel="tag"># huffman</a>
+              <a href="/etiketler/sikistirma/" rel="tag"># sıkıştırma</a>
+              <a href="/etiketler/algoritma/" rel="tag"># algoritma</a>
           </div>
 
         
@@ -341,11 +335,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/tr/Yazilim/2015/12/perceptron-egitimi-yapay-sinir-aglari/" rel="prev" title="Perceptron Eğitimi &#8211; Yapay Sinir Ağları">
+    <a href="/Yazilim/2015/12/perceptron-egitimi-yapay-sinir-aglari/" rel="prev" title="Perceptron Eğitimi &#8211; Yapay Sinir Ağları">
       <i class="fa fa-chevron-left"></i> Perceptron Eğitimi &#8211; Yapay Sinir Ağları
     </a></div>
       <div class="post-nav-item">
-    <a href="/tr/Yazilim/2015/12/rdt-ve-tcp-protokolu-similatoru/" rel="next" title="RDT ve TCP Protokolü Similatörü">
+    <a href="/Yazilim/2015/12/rdt-ve-tcp-protokolu-similatoru/" rel="next" title="RDT ve TCP Protokolü Similatörü">
       RDT ve TCP Protokolü Similatörü <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -418,7 +412,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/tr/arsiv/">
+          <a href="/arsiv/">
         
           <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">makale</span>
@@ -443,7 +437,7 @@
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/tr/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -491,32 +485,32 @@
   </div>
 
   
-  <script src="/tr/lib/anime.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="/tr/lib/velocity/velocity.min.js"></script>
-  <script src="/tr/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/tr/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/tr/js/motion.js"></script>
-
-
-<script src="/tr/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/tr/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="/tr/js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
