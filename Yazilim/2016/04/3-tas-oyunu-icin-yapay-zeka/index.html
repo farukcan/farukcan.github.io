@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/tr/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/tr/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/tr/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/tr/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/tr/css/main.css">
+
+
+<link rel="stylesheet" href="/tr/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"farukcan.net","root":"/tr/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Bu oyunda YZ, oyuncunun yaptığı hamlenin ardından, kendi yapacağı hamlelerin durum uzayını oluşturup sezgisel fonksiyon ile ileriye yönelik hamleleri bir puan vermektedir. Bunu yaparken, rakibinin bir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3 taş oyunu için Yapay Zeka">
+<meta property="og:url" content="http://farukcan.net/tr/Yazilim/2016/04/3-tas-oyunu-icin-yapay-zeka/index.html">
+<meta property="og:site_name" content="Faruk CAN">
+<meta property="og:description" content="Bu oyunda YZ, oyuncunun yaptığı hamlenin ardından, kendi yapacağı hamlelerin durum uzayını oluşturup sezgisel fonksiyon ile ileriye yönelik hamleleri bir puan vermektedir. Bunu yaparken, rakibinin bir">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2016-04-08T10:18:55.000Z">
+<meta property="article:modified_time" content="2020-03-10T18:03:56.976Z">
+<meta property="article:author" content="Faruk CAN">
+<meta property="article:tag" content="yazılım">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="oop">
+<meta property="article:tag" content="yapay zeka">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://farukcan.net/tr/Yazilim/2016/04/3-tas-oyunu-icin-yapay-zeka/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>3 taş oyunu için Yapay Zeka | Faruk CAN</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Gezinti çubuğunu değiştir">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/tr/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Faruk CAN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Yazılım,felsefe ve edebiyat üzerine…</h1>
+      
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/tr/" rel="section"><i class="fa fa-fw fa-home"></i>Ana Sayfa</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/tr/hakkimda/" rel="section"><i class="fa fa-fw fa-user"></i>Hakkımda</a>
+
+  </li>
+        <li class="menu-item menu-item-contact">
+
+    <a href="/tr/iletisim/" rel="section"><i class="fa fa-fw fa-address-book"></i>İletişim</a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/tr/projelerim/" rel="section"><i class="fa fa-fw fa-tasks"></i>Projeler</a>
+
+  </li>
+        <li class="menu-item menu-item-privacy_policy">
+
+    <a href="/tr/privacy-policy/" rel="section"><i class="fa fa-fw fa-file"></i>Gizlilik Politikası</a>
+
+  </li>
+        <li class="menu-item menu-item-terms_conditions">
+
+    <a href="/tr/terms-conditions/" rel="section"><i class="fa fa-fw fa-clone"></i>Şartlar ve Durumlar</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/tr/kategoriler/" rel="section"><i class="fa fa-fw fa-th"></i>Kategoriler<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/tr/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">48</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Ara
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="Aranıyor..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="tr">
+    <link itemprop="mainEntityOfPage" href="http://farukcan.net/tr/Yazilim/2016/04/3-tas-oyunu-icin-yapay-zeka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/tr/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve edebiyat üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          3 taş oyunu için Yapay Zeka
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 08-04-2016 13:18:55" itemprop="dateCreated datePublished" datetime="2016-04-08T13:18:55+03:00">08-04-2016</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Düzenleme</span>
+                <time title="Değiştirildi: 10-03-2020 21:03:56" itemprop="dateModified" datetime="2020-03-10T21:03:56+03:00">10-03-2020</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/tr/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Bu oyunda YZ, oyuncunun yaptığı hamlenin ardından, kendi yapacağı hamlelerin durum uzayını oluşturup sezgisel fonksiyon ile ileriye yönelik hamleleri bir puan vermektedir. Bunu yaparken, rakibinin bir sonraki hamlesini de göz önüne alır.</p>
+<iframe src="/tr/html/tiktakto.html" width="100%" height="550px"></iframe>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Faruk Can on 6.4.2016.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ç = <span class="keyword">new</span> CanvasRender(<span class="string">"canvas1"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvasboyut = <span class="number">500</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tahta = [</span><br><span class="line">    [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 1 : X</span></span><br><span class="line"><span class="comment">// diğer : O</span></span><br><span class="line"><span class="comment">// 0 : boş</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// kontrol mekanizması</span></span><br><span class="line">ç.addClickListener(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x,y);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> hamleyapmakiçinarray = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> m=<span class="number">0</span>;m&lt;<span class="number">3</span>;m++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>;n&lt;<span class="number">3</span>;n++)&#123;</span><br><span class="line">        hamleyapmakiçinarray.push(&#123;</span><br><span class="line">            <span class="string">"height"</span> : canvasboyut/<span class="number">3</span>,</span><br><span class="line">            <span class="string">"width"</span> : canvasboyut/<span class="number">3</span>,</span><br><span class="line">            <span class="string">"top"</span> : canvasboyut/<span class="number">3</span>*m,</span><br><span class="line">            <span class="string">"left"</span> : canvasboyut/<span class="number">3</span>*n</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">0</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">0</span>,<span class="number">0</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">1</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">0</span>,<span class="number">1</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">2</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">0</span>,<span class="number">2</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">3</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">1</span>,<span class="number">0</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">4</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">1</span>,<span class="number">1</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">5</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">1</span>,<span class="number">2</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">6</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">2</span>,<span class="number">0</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">7</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">2</span>,<span class="number">1</span>)&#125;;</span><br><span class="line">hamleyapmakiçinarray[<span class="number">8</span>].func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;hamleyap(<span class="number">2</span>,<span class="number">2</span>)&#125;;</span><br><span class="line">ç.clickElement = hamleyapmakiçinarray;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ilk durum</span></span><br><span class="line"><span class="keyword">var</span> oyunKimde = <span class="string">"X"</span>;</span><br><span class="line"><span class="keyword">var</span> sıra = <span class="number">0</span>;</span><br><span class="line">tahtayıÇiz();</span><br><span class="line">hamleleriÇiz(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hamleyap</span>(<span class="params">m,n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(oyunKimde == <span class="string">"X"</span> &amp;&amp; tahta[m][n]==<span class="number">0</span>)&#123;</span><br><span class="line">        tahta[m][n] = <span class="number">1</span>;</span><br><span class="line">        oyunKimde = <span class="string">"O"</span>;</span><br><span class="line">        ç.clear();</span><br><span class="line">        tahtayıÇiz();</span><br><span class="line">        hamleleriÇiz();</span><br><span class="line">        sıra++;</span><br><span class="line">        <span class="keyword">if</span>(!oyunsonu())</span><br><span class="line">            setTimeout(YZhamleyap,<span class="number">500</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">oyunsonu</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sıra&gt;<span class="number">8</span>) <span class="keyword">return</span> beraber();</span><br><span class="line">    <span class="keyword">var</span> taraf = <span class="number">1</span>;</span><br><span class="line">    kontrolEdilecekYerler.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">yerler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> kactane1var = <span class="number">0</span>;</span><br><span class="line">        yerler.every(<span class="function"><span class="keyword">function</span>(<span class="params">y</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> n= (y<span class="number">-1</span>)%<span class="number">3</span>;</span><br><span class="line">            <span class="keyword">var</span> m= <span class="built_in">Math</span>.floor((y<span class="number">-1</span>)/<span class="number">3</span>);</span><br><span class="line">            <span class="keyword">if</span>(tahta[m][n]*taraf==<span class="number">-1</span>) &#123;</span><br><span class="line">                kactane1var=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(tahta[m][n]*taraf==<span class="number">1</span>) kactane1var++;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span>(kactane1var==<span class="number">3</span>) &#123;</span><br><span class="line">            Xkazandı();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">var</span> taraf = <span class="number">-1</span>;</span><br><span class="line">    kontrolEdilecekYerler.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">yerler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> kactane1var = <span class="number">0</span>;</span><br><span class="line">        yerler.every(<span class="function"><span class="keyword">function</span>(<span class="params">y</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> n= (y<span class="number">-1</span>)%<span class="number">3</span>;</span><br><span class="line">            <span class="keyword">var</span> m= <span class="built_in">Math</span>.floor((y<span class="number">-1</span>)/<span class="number">3</span>);</span><br><span class="line">            <span class="keyword">if</span>(tahta[m][n]*taraf==<span class="number">-1</span>) &#123;</span><br><span class="line">                kactane1var=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(tahta[m][n]*taraf==<span class="number">1</span>) kactane1var++;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span>(kactane1var==<span class="number">3</span>) &#123;</span><br><span class="line">            Okazandı();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Xkazand</span>ı(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"X kazandı"</span>);</span><br><span class="line">    reload();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Okazand</span>ı(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"O kazandı"</span>);</span><br><span class="line">    reload();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beraber</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Berabere"</span>);</span><br><span class="line">    reload();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reload</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;location.reload();&#125;,<span class="number">2000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> kontrolEdilecekYerler = [</span><br><span class="line">    [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">    [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">    [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],</span><br><span class="line">    [<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>],</span><br><span class="line">    [<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>],</span><br><span class="line">    [<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>],</span><br><span class="line">    [<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>],</span><br><span class="line">    [<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// # tek taraf sezgisel fonksiyon h2</span></span><br><span class="line"><span class="comment">// -- her satır, sutun ve 2çarpraz için</span></span><br><span class="line"><span class="comment">// --- Eğer -1 varsa : 0 puan</span></span><br><span class="line"><span class="comment">// --- Eğer 1 tane 1 varsa : 1 puan</span></span><br><span class="line"><span class="comment">// --- Eğer 2 tane 1 varsa : 3 puan</span></span><br><span class="line"><span class="comment">// --- Eğer 3 tane 1 varsa : 99 puan</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">h2</span>(<span class="params">taraf,durum</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> puan=<span class="number">0</span>;</span><br><span class="line">    kontrolEdilecekYerler.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">yerler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> kactane1var = <span class="number">0</span>;</span><br><span class="line">        yerler.every(<span class="function"><span class="keyword">function</span>(<span class="params">y</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> n= (y<span class="number">-1</span>)%<span class="number">3</span>;</span><br><span class="line">            <span class="keyword">var</span> m= <span class="built_in">Math</span>.floor((y<span class="number">-1</span>)/<span class="number">3</span>);</span><br><span class="line">            <span class="keyword">if</span>(durum[m][n]*taraf==<span class="number">-1</span>) &#123;</span><br><span class="line">                kactane1var=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(durum[m][n]*taraf==<span class="number">1</span>) kactane1var++;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span>(kactane1var==<span class="number">3</span>) puan+=<span class="number">999</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(kactane1var==<span class="number">2</span>)  puan+=<span class="number">3</span>;</span><br><span class="line">        <span class="keyword">else</span> puan+=kactane1var;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> puan;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// rahibin sonraki el en iyi hamlesinin puanını belirle</span></span><br><span class="line"><span class="keyword">var</span> h3iterasyon=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">h3</span>(<span class="params">taraf,durum</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(++h3iterasyon==<span class="number">100</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> olasıHamleler = [];</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     &#123;</span></span><br><span class="line"><span class="comment">     m: (x)</span></span><br><span class="line"><span class="comment">     n: (y)</span></span><br><span class="line"><span class="comment">     h:(sayı) // hamlenin sezgisel fonksiyon değeri</span></span><br><span class="line"><span class="comment">     &#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> m=<span class="number">0</span>;m&lt;<span class="number">3</span>;m++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>;n&lt;<span class="number">3</span>;n++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(durum[m][n]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">// boş olan yerlere hamle yapılabilir</span></span><br><span class="line">                <span class="keyword">var</span> d = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(durum)) <span class="comment">// dunyayı klonla</span></span><br><span class="line">                d[m][n] = taraf; <span class="comment">//hamleyi duruma dahil et</span></span><br><span class="line">                olasıHamleler.push(</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="string">"m"</span> : m,</span><br><span class="line">                        <span class="string">"n"</span> : n,</span><br><span class="line">                        <span class="string">"h"</span> : h(taraf,d)</span><br><span class="line">                    &#125;</span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// en iyi hamleleri sırala</span></span><br><span class="line">    olasıHamleler.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b.h - a.h;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> olasıHamleler[<span class="number">0</span>] == <span class="string">"undefined"</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> olasıHamleler[<span class="number">0</span>].h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// # çift taraf sezgisel fonksiyon h</span></span><br><span class="line"><span class="comment">// -- h = h2 - h3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">h</span>(<span class="params">taraf,durum</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> h2(taraf,durum) - h3(-taraf,durum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">YZhamleyap</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    h3iterasyon=<span class="number">0</span>;</span><br><span class="line">    sıra++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> olasıHamleler = [];</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        m: (x)</span></span><br><span class="line"><span class="comment">        n: (y)</span></span><br><span class="line"><span class="comment">        h:(sayı) // hamlenin sezgisel fonksiyon değeri</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> m=<span class="number">0</span>;m&lt;<span class="number">3</span>;m++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>;n&lt;<span class="number">3</span>;n++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(tahta[m][n]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">// boş olan yerlere hamle yapılabilir</span></span><br><span class="line">                <span class="keyword">var</span> durum = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(tahta)) <span class="comment">// dunyayı klonla</span></span><br><span class="line">                durum[m][n] = <span class="number">-1</span>; <span class="comment">//hamleyi duruma dahil et</span></span><br><span class="line">                olasıHamleler.push(</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="string">"m"</span> : m,</span><br><span class="line">                        <span class="string">"n"</span> : n,</span><br><span class="line">                        <span class="string">"h"</span> : h(<span class="number">-1</span>,durum)</span><br><span class="line">                    &#125;</span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// en iyi hamleleri sırala</span></span><br><span class="line">    olasıHamleler.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> b.h - a.h;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    tahta[olasıHamleler[<span class="number">0</span>].m][olasıHamleler[<span class="number">0</span>].n] = <span class="number">-1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(olasıHamleler);</span><br><span class="line">    oyunKimde = <span class="string">"X"</span>;</span><br><span class="line">    ç.clear();</span><br><span class="line">    tahtayıÇiz();</span><br><span class="line">    hamleleriÇiz(<span class="literal">true</span>);</span><br><span class="line">    oyunsonu();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tahtay</span>ıÇ<span class="title">iz</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// tik tak to tahtası</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">        ç.line(canvasboyut/<span class="number">3</span>*i,<span class="number">20</span>,canvasboyut/<span class="number">3</span>*i,canvasboyut<span class="number">-20</span>);</span><br><span class="line">        ç.line(<span class="number">20</span>,canvasboyut/<span class="number">3</span>*i,canvasboyut<span class="number">-20</span>,canvasboyut/<span class="number">3</span>*i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hamleleri</span>Ç<span class="title">iz</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// tahta üzerinde yazan meretler</span></span><br><span class="line">    <span class="keyword">var</span> sira = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> m=<span class="number">0</span>;m&lt;<span class="number">3</span>;m++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>;n&lt;<span class="number">3</span>;n++)&#123;</span><br><span class="line">            sira++;</span><br><span class="line">            <span class="keyword">if</span>(tahta[m][n]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(num)&#123;</span><br><span class="line">                    ç.font(ç.standartFont);</span><br><span class="line">                    ç.text(sira,canvasboyut/<span class="number">6</span>+canvasboyut/<span class="number">3</span>*n,canvasboyut/<span class="number">6</span>+canvasboyut/<span class="number">3</span>*m);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(tahta[m][n]==<span class="number">1</span>)&#123;</span><br><span class="line">                ç.font(<span class="string">"233px Arial"</span>);</span><br><span class="line">                ç.text(<span class="string">"X"</span>,canvasboyut/<span class="number">3</span>*n,canvasboyut/<span class="number">3</span>+canvasboyut/<span class="number">3</span>*m);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ç.font(<span class="string">"213px Arial"</span>);</span><br><span class="line">                ç.text(<span class="string">"O"</span>,canvasboyut/<span class="number">3</span>*n,canvasboyut/<span class="number">3</span>+canvasboyut/<span class="number">3</span>*m<span class="number">-5</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ç.font(ç.standartFont);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">İlgili Gönderiler</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2016\05\a-algoritmasi-a-yildiz-arama-algoritmasi\" rel="bookmark">A* Algoritması (A yıldız arama algoritması)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2016\05\heap-tree-yigin-agaci-ve-js-kutuphanesi-kodlari\" rel="bookmark">Heap Tree (Yığın Ağacı) ve JS kütüphanesi kodları
+</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2016\06\javascript-scope-incelikleri\" rel="bookmark">Javascript Scope İncelikleri</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2016\06\nesne-yonelimli-javascript\" rel="bookmark">Nesne Yönelimli Javascript</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\12\veri-sikistirma-huffman-algoritmasi-js\" rel="bookmark">Veri Sıkıştırma &#8211; Huffman Algoritması &#8211; JS</a></div>
+    </li>
+  </ul>
+
+        
+
+  <div class="followme">
+    <p>Welcome to my other publishing channels</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="https://twitter.com/7farukcan">
+                <span class="icon">
+                  <i class="fa fa-twitter"></i>
+                </span>
+
+                <span class="label">Twitter</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tr/etiketler/yazilim/" rel="tag"># yazılım</a>
+              <a href="/tr/etiketler/javascript/" rel="tag"># javascript</a>
+              <a href="/tr/etiketler/oop/" rel="tag"># oop</a>
+              <a href="/tr/etiketler/yapay-zeka/" rel="tag"># yapay zeka</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/tr/Psikoloji/2016/02/astroloji-ve-burclarin-yikici-etkisi-ve-zararlari/" rel="prev" title="Astroloji ve Burçların Yıkıcı Etkisi ve Zararları
+">
+      <i class="fa fa-chevron-left"></i> Astroloji ve Burçların Yıkıcı Etkisi ve Zararları
+
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/tr/Yazilim/2016/05/a-algoritmasi-a-yildiz-arama-algoritmasi/" rel="next" title="A* Algoritması (A yıldız arama algoritması)">
+      A* Algoritması (A yıldız arama algoritması) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          İçindekiler
+        </li>
+        <li class="sidebar-nav-overview">
+          Genel Bakış
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Faruk CAN</p>
+  <div class="site-description" itemprop="description">Yazılım,felsefe ve edebiyat üzerine…</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/tr/arsiv/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">makale</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">kategori</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">etiket</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/farukcan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;farukcan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mail@farukcan.net" title="E-Mail → mailto:mail@farukcan.net"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/tr/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Faruk CAN</span>
+</div>
+  <div class="powered-by"><a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> motoru
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Tema – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/tr/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/tr/lib/velocity/velocity.min.js"></script>
+  <script src="/tr/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/tr/js/utils.js"></script>
+
+<script src="/tr/js/motion.js"></script>
+
+
+<script src="/tr/js/schemes/pisces.js"></script>
+
+
+<script src="/tr/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/tr/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

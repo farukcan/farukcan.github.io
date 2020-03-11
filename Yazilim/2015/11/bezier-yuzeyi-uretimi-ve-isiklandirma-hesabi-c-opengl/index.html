@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/tr/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/tr/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/tr/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/tr/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/tr/css/main.css">
+
+
+<link rel="stylesheet" href="/tr/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"farukcan.net","root":"/tr/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="bezier2.cview raw12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bezier Yüzeyi Üretimi ve Işıklandırma Hesabı (C++ &#x2F; OpenGL )
+">
+<meta property="og:url" content="http://farukcan.net/tr/Yazilim/2015/11/bezier-yuzeyi-uretimi-ve-isiklandirma-hesabi-c-opengl/index.html">
+<meta property="og:site_name" content="Faruk CAN">
+<meta property="og:description" content="bezier2.cview raw12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="http://farukcan.net/tr/html/uploads/2015/11/ekran.png">
+<meta property="article:published_time" content="2015-11-19T09:22:49.000Z">
+<meta property="article:modified_time" content="2020-03-10T18:09:14.895Z">
+<meta property="article:author" content="Faruk CAN">
+<meta property="article:tag" content="yazılım">
+<meta property="article:tag" content="cpp">
+<meta property="article:tag" content="bezier">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://farukcan.net/tr/html/uploads/2015/11/ekran.png">
+
+<link rel="canonical" href="http://farukcan.net/tr/Yazilim/2015/11/bezier-yuzeyi-uretimi-ve-isiklandirma-hesabi-c-opengl/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Bezier Yüzeyi Üretimi ve Işıklandırma Hesabı (C++ / OpenGL )
+ | Faruk CAN</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Gezinti çubuğunu değiştir">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/tr/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Faruk CAN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Yazılım,felsefe ve edebiyat üzerine…</h1>
+      
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/tr/" rel="section"><i class="fa fa-fw fa-home"></i>Ana Sayfa</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/tr/hakkimda/" rel="section"><i class="fa fa-fw fa-user"></i>Hakkımda</a>
+
+  </li>
+        <li class="menu-item menu-item-contact">
+
+    <a href="/tr/iletisim/" rel="section"><i class="fa fa-fw fa-address-book"></i>İletişim</a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/tr/projelerim/" rel="section"><i class="fa fa-fw fa-tasks"></i>Projeler</a>
+
+  </li>
+        <li class="menu-item menu-item-privacy_policy">
+
+    <a href="/tr/privacy-policy/" rel="section"><i class="fa fa-fw fa-file"></i>Gizlilik Politikası</a>
+
+  </li>
+        <li class="menu-item menu-item-terms_conditions">
+
+    <a href="/tr/terms-conditions/" rel="section"><i class="fa fa-fw fa-clone"></i>Şartlar ve Durumlar</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/tr/kategoriler/" rel="section"><i class="fa fa-fw fa-th"></i>Kategoriler<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/tr/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">48</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Ara
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="Aranıyor..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="tr">
+    <link itemprop="mainEntityOfPage" href="http://farukcan.net/tr/Yazilim/2015/11/bezier-yuzeyi-uretimi-ve-isiklandirma-hesabi-c-opengl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/tr/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve edebiyat üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Bezier Yüzeyi Üretimi ve Işıklandırma Hesabı (C++ / OpenGL )
+
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 19-11-2015 11:22:49" itemprop="dateCreated datePublished" datetime="2015-11-19T11:22:49+02:00">19-11-2015</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Düzenleme</span>
+                <time title="Değiştirildi: 10-03-2020 21:09:14" itemprop="dateModified" datetime="2020-03-10T21:09:14+03:00">10-03-2020</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/tr/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/tr/html/uploads/2015/11/ekran.png"><img class="alignnone size-full wp-image-421" alt="ekran" src="/tr/html/uploads/2015/11/ekran.png" width="765" height="635" /></a></p>
+<figure class="highlight c"><figcaption><span>bezier2.c</span><a href="/tr/indirme/kod/bezier2.c">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 16 adet bezier noktası</span></span><br><span class="line">GLfloat k[<span class="number">4</span>][<span class="number">4</span>][<span class="number">3</span>] = {</span><br><span class="line">   {{<span class="number">-1.5</span>, <span class="number">-1.5</span>, <span class="number">4.0</span>}, {<span class="number">-0.5</span>, <span class="number">-1.5</span>, <span class="number">2.0</span>},</span><br><span class="line">    {<span class="number">0.5</span>, <span class="number">-1.5</span>, <span class="number">-1.0</span>}, {<span class="number">1.5</span>, <span class="number">-1.5</span>, <span class="number">2.0</span>}},</span><br><span class="line">   {{<span class="number">-1.5</span>, <span class="number">-0.5</span>, <span class="number">1.0</span>}, {<span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">1.0</span>},</span><br><span class="line">    {<span class="number">1.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>}, {<span class="number">1.5</span>, <span class="number">-0.5</span>, <span class="number">-1.0</span>}},</span><br><span class="line">   {{<span class="number">-1.5</span>, <span class="number">0.5</span>, <span class="number">4.0</span>}, {<span class="number">-1.5</span>, <span class="number">0.5</span>, <span class="number">0.0</span>},</span><br><span class="line">    {<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">3.0</span>}, {<span class="number">1.5</span>, <span class="number">0.5</span>, <span class="number">4.0</span>}},</span><br><span class="line">   {{<span class="number">-1.5</span>, <span class="number">1.5</span>, <span class="number">-2.0</span>}, {<span class="number">-0.5</span>, <span class="number">1.5</span>, <span class="number">-2.0</span>},</span><br><span class="line">    {<span class="number">0.5</span>, <span class="number">1.5</span>, <span class="number">0.0</span>}, {<span class="number">3.5</span>, <span class="number">1.5</span>, <span class="number">-1.0</span>}}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="comment">// Işık kaynağının kordinatı</span></span><br><span class="line">GLfloat light[<span class="number">3</span>] = {<span class="number">0.5f</span>,<span class="number">1.5f</span>,<span class="number">0.0f</span>} ;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bezier yüzeyinin gerçekçiliği</span></span><br><span class="line"><span class="keyword">int</span> hassasiyet = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kamera yönü için dönüş açısı</span></span><br><span class="line"><span class="keyword">float</span> angle = <span class="number">0.0f</span>;</span><br><span class="line"><span class="comment">// Kameranın yönünü temsil eden asıl vektör</span></span><br><span class="line"><span class="keyword">float</span> lx=<span class="number">0.0f</span>,lz=<span class="number">-1.0f</span>;</span><br><span class="line"><span class="comment">// Kameranın XZ konumu</span></span><br><span class="line"><span class="keyword">float</span> x=<span class="number">0.0f</span>, z=<span class="number">5.0f</span>;</span><br><span class="line"><span class="comment">// tuş durumları. Bu değişkenler sıfır olacak</span></span><br><span class="line"><span class="comment">// Hiç tuş basımı olmadığında</span></span><br><span class="line"><span class="keyword">float</span> deltaAngle = <span class="number">0.0f</span>;</span><br><span class="line"><span class="keyword">float</span> deltaMove = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> xOrigin = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">faktoriyel</span><span class="params">(<span class="keyword">int</span> s)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(s &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> s * faktoriyel(s - <span class="number">1</span>);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">permutasyon</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> i)</span></span>{</span><br><span class="line">	<span class="keyword">return</span> faktoriyel(n)/(faktoriyel(i)*faktoriyel(n-i));</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">ust</span><span class="params">(<span class="keyword">float</span> x,<span class="keyword">int</span> k)</span></span>{</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">float</span>)<span class="built_in">pow</span>((<span class="keyword">double</span>)x,(<span class="keyword">double</span>)k);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bi,n(u) Bezierin için n.dereceden binom fonksiyonu</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">B</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> n,<span class="keyword">float</span> u)</span></span>{</span><br><span class="line">	<span class="keyword">return</span> ((<span class="keyword">float</span>)permutasyon(n,i)) * ust(u,i) * ust((<span class="number">1.0f</span>-u),(n-i));</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// p(u,v) - Bezier noktasını veren fonksiyon</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">p</span><span class="params">(<span class="keyword">float</span> u,<span class="keyword">float</span> v,<span class="keyword">int</span> d<span class="comment">/* d : dimesion boyut 0x 1y 2z */</span>)</span></span>{</span><br><span class="line">	<span class="keyword">int</span> i,j; <span class="comment">/* cache */</span></span><br><span class="line">	<span class="keyword">float</span> out=<span class="number">0</span>; <span class="comment">/* çıktı */</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++){</span><br><span class="line">			out = out + B(i,<span class="number">3</span>,u) * B(j,<span class="number">3</span>,v) * k[i][j][d];</span><br><span class="line">		}</span><br><span class="line">	<span class="keyword">return</span> out;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 2 nokta arasındaki farkı bulur */</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">d</span><span class="params">(<span class="keyword">float</span> x1,<span class="keyword">float</span> y1,<span class="keyword">float</span> z1,<span class="keyword">float</span> x2,<span class="keyword">float</span> y2,<span class="keyword">float</span> z2)</span></span>{</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">float</span>)(<span class="built_in">sqrt</span>((<span class="keyword">double</span>)(ust((x2-x1),<span class="number">2</span>) + ust((y2-y1),<span class="number">2</span>) + ust((z2-z1),<span class="number">2</span>))));</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bezirYuzey</span><span class="params">(<span class="keyword">void</span>)</span></span>{ <span class="comment">// bu fonksiyon bezier yüzeyi oluşturur</span></span><br><span class="line"><span class="keyword">int</span> i,j,v;</span><br><span class="line"><span class="keyword">float</span> I,f,x[<span class="number">4</span>],y[<span class="number">4</span>],z[<span class="number">4</span>],nx,ny,nz,nd,lx,ly,lz,ld,alfa,calfa,k=<span class="number">0.0000001f</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ışığın birim vektörünü hesaplayalım</span></span><br><span class="line">	ld = d(<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,light[<span class="number">0</span>],light[<span class="number">1</span>],light[<span class="number">2</span>]);</span><br><span class="line">	lx = light[<span class="number">0</span>]/ld;</span><br><span class="line">	ly = light[<span class="number">1</span>]/ld;</span><br><span class="line">	lz = light[<span class="number">2</span>]/ld;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   glPointSize(<span class="number">2.0</span>);</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; hassasiyet; i++)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; hassasiyet; j++) {</span><br><span class="line">			<span class="comment">// yüzeyin noktalarını hesapla</span></span><br><span class="line">			x[<span class="number">0</span>] = p(<span class="number">1.00f</span>*i/hassasiyet,<span class="number">1.00f</span>*j/hassasiyet,<span class="number">0</span>);</span><br><span class="line">			x[<span class="number">1</span>] = p(<span class="number">1.00f</span>*i/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">1</span>)/hassasiyet,<span class="number">0</span>);</span><br><span class="line">			x[<span class="number">2</span>] = p(<span class="number">1.00f</span>*(i+<span class="number">1</span>)/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">1</span>)/hassasiyet,<span class="number">0</span>);</span><br><span class="line">			x[<span class="number">3</span>] = p(<span class="number">1.00f</span>*(i+<span class="number">1</span>)/hassasiyet,<span class="number">1.00f</span>*j/hassasiyet,<span class="number">0</span>);</span><br><span class="line">			y[<span class="number">0</span>]= p(<span class="number">1.00f</span>*i/hassasiyet,<span class="number">1.00f</span>*j/hassasiyet,<span class="number">1</span>);</span><br><span class="line">			y[<span class="number">1</span>]= p(<span class="number">1.00f</span>*i/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">1</span>)/hassasiyet,<span class="number">1</span>);</span><br><span class="line">			y[<span class="number">2</span>]= p(<span class="number">1.00f</span>*(i+<span class="number">1</span>)/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">1</span>)/hassasiyet,<span class="number">1</span>);</span><br><span class="line">			y[<span class="number">3</span>]= p(<span class="number">1.00f</span>*(i+<span class="number">1</span>)/hassasiyet,<span class="number">1.00f</span>*j/hassasiyet,<span class="number">1</span>);</span><br><span class="line">			z[<span class="number">0</span>] = p(<span class="number">1.00f</span>*i/hassasiyet,<span class="number">1.00f</span>*j/hassasiyet,<span class="number">2</span>);</span><br><span class="line">			z[<span class="number">1</span>] = p(<span class="number">1.00f</span>*i/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">1</span>)/hassasiyet,<span class="number">2</span>);</span><br><span class="line">			z[<span class="number">2</span>] = p(<span class="number">1.00f</span>*(i+<span class="number">1</span>)/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">1</span>)/hassasiyet,<span class="number">2</span>);</span><br><span class="line">			z[<span class="number">3</span>] = p(<span class="number">1.00f</span>*(i+<span class="number">1</span>)/hassasiyet,<span class="number">1.00f</span>*j/hassasiyet,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// normal vektorü  hesaplayalım</span></span><br><span class="line">			nx = ((y[<span class="number">1</span>] - y[<span class="number">2</span>]) * (z[<span class="number">2</span>] - z[<span class="number">3</span>])) - ((z[<span class="number">1</span>] - z[<span class="number">2</span>]) * (y[<span class="number">2</span>] - y[<span class="number">3</span>]));</span><br><span class="line">			ny = ((z[<span class="number">1</span>] - z[<span class="number">2</span>]) * (x[<span class="number">2</span>] - x[<span class="number">3</span>])) - ((x[<span class="number">1</span>] - x[<span class="number">2</span>]) * (z[<span class="number">2</span>] - z[<span class="number">3</span>]));</span><br><span class="line">			nz = ((x[<span class="number">1</span>] - x[<span class="number">2</span>]) * (y[<span class="number">2</span>] - y[<span class="number">3</span>])) - ((y[<span class="number">1</span>] - y[<span class="number">2</span>]) * (x[<span class="number">2</span>] - x[<span class="number">3</span>]));</span><br><span class="line">			<span class="comment">// normal vektörünün uzunluğu</span></span><br><span class="line">			nd = d(<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,nx,ny,nz);</span><br><span class="line">			<span class="comment">// normal vektörünü, birim vektor haline getirelin</span></span><br><span class="line">			nx /= nd;</span><br><span class="line">			ny /= nd;</span><br><span class="line">			nz /= nd;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			<span class="comment">//alfa ; ışık vektörü ile normal vektörü arasındaki açıdır</span></span><br><span class="line">			<span class="comment">// &lt;n,l&gt; = |n|*|l|*cosALFA; n ve l nin uzunluğu 1dir</span></span><br><span class="line">			alfa = (<span class="keyword">float</span>)<span class="built_in">acos</span>((<span class="keyword">double</span>)((nx*lx) + (ny*ly) + (nz*lz)));</span><br><span class="line"></span><br><span class="line">			<span class="comment">// calfa = cos(alfa)'dır'</span></span><br><span class="line">			calfa = (<span class="keyword">float</span>)<span class="built_in">cos</span>((<span class="keyword">double</span>)alfa);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// f : normal(orta nokta) ile ışık kaynağı arası mesafe</span></span><br><span class="line">			f = d(light[<span class="number">0</span>],light[<span class="number">1</span>],light[<span class="number">2</span>],p(<span class="number">1.00f</span>*(i+<span class="number">0.5f</span>)/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">0.5f</span>)/hassasiyet,<span class="number">0</span>),p(<span class="number">1.00f</span>*(i+<span class="number">0.5f</span>)/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">0.5f</span>)/hassasiyet,<span class="number">1</span>),p(<span class="number">1.00f</span>*(i+<span class="number">0.5f</span>)/hassasiyet,<span class="number">1.00f</span>*(j+<span class="number">0.5f</span>)/hassasiyet,<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">			<span class="comment">// ışık şiddetini hesapla</span></span><br><span class="line">			I = <span class="number">1.0f</span>*calfa / (f+k); <span class="comment">// ışık fonksiyonu</span></span><br><span class="line"></span><br><span class="line">   		   glColor3f(I*<span class="number">0.05f</span>,I,I); <span class="comment">// ışıklandırmaya göre yüze renk ver</span></span><br><span class="line"></span><br><span class="line">		   glBegin(GL_QUADS); <span class="comment">// yüzeyi çiz</span></span><br><span class="line">			   <span class="keyword">for</span>(v = <span class="number">0</span>; v&lt; <span class="number">4</span>;v++ )</span><br><span class="line">			         glVertex3f(x[v],y[v],z[v]);</span><br><span class="line">		   glEnd();</span><br><span class="line"></span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">changeSize</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> h)</span> </span>{ <span class="comment">//penceri boyutu değişirse</span></span><br><span class="line">	<span class="comment">// sıfırla bölmeyi önle.</span></span><br><span class="line">	<span class="keyword">if</span> (h == <span class="number">0</span>)</span><br><span class="line">		h = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">float</span> ratio = w * <span class="number">1.0</span> / h;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Projection Matrisini aktif et</span></span><br><span class="line">	glMatrixMode(GL_PROJECTION);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Matrisi resetle</span></span><br><span class="line">	glLoadIdentity();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// viewport olarak tüm pencereyi set et</span></span><br><span class="line">	glViewport(<span class="number">0</span>, <span class="number">0</span>, w, h);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// uygun perspektifi set et.</span></span><br><span class="line">	gluPerspective(<span class="number">45.0f</span>, ratio, <span class="number">0.1f</span>, <span class="number">100.0f</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Modelview’e geç</span></span><br><span class="line">	glMatrixMode(GL_MODELVIEW);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">computePos</span><span class="params">(<span class="keyword">float</span> deltaMove)</span> </span>{ <span class="comment">// kamere pozisyonu hesapla</span></span><br><span class="line">	x += deltaMove * lx * <span class="number">0.1f</span>;</span><br><span class="line">	z += deltaMove * lz * <span class="number">0.1f</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">renderScene</span><span class="params">(<span class="keyword">void</span>)</span> </span>{</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">if</span> (deltaMove)</span><br><span class="line">		computePos(deltaMove);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Color ve Depth Bufferları temizle</span></span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// dönüşümleri Resetle</span></span><br><span class="line"></span><br><span class="line">	glLoadIdentity();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// kamerayı set et</span></span><br><span class="line">	gluLookAt(</span><br><span class="line">	x, <span class="number">1.0f</span>, z,</span><br><span class="line">	x+lx, <span class="number">1.0f</span>, z+lz,</span><br><span class="line">	<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// bezier noktalarını çiz</span></span><br><span class="line">   glPointSize(<span class="number">5.0</span>);</span><br><span class="line">   glColor3f(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">   glBegin(GL_POINTS);</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">         glVertex3fv(&amp;k[i][j][<span class="number">0</span>]);</span><br><span class="line">   glEnd();</span><br><span class="line"></span><br><span class="line">   glPointSize(<span class="number">10.0</span>);</span><br><span class="line">   glColor3f(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">   glBegin(GL_POINTS);</span><br><span class="line">         glVertex3fv(&amp;light[<span class="number">0</span>]);</span><br><span class="line">   glEnd();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">// bezier yüzeyini çız</span></span><br><span class="line">   bezirYuzey();</span><br><span class="line"></span><br><span class="line">   <span class="comment">// bezier yüzeyin noktalarını hareket ver</span></span><br><span class="line">   <span class="comment">/*k[3][3][2] = k[3][3][2] + 0.01f;</span></span><br><span class="line"><span class="comment">   k[1][2][2] = k[1][2][2] - 0.01f;*/</span></span><br><span class="line">   light[<span class="number">2</span>] += <span class="number">0.01f</span>;</span><br><span class="line">   light[<span class="number">1</span>] -= <span class="number">0.001f</span>;</span><br><span class="line"></span><br><span class="line">   glutSwapBuffers();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// -----------------------------------//</span></span><br><span class="line"><span class="comment">//KLAVYE</span></span><br><span class="line"><span class="comment">// -----------------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processNormalKeys</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> key, <span class="keyword">int</span> xx, <span class="keyword">int</span> yy)</span> </span>{</span><br><span class="line">	<span class="keyword">if</span> (key == <span class="number">27</span>)</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pressKey</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> xx, <span class="keyword">int</span> yy)</span> </span>{</span><br><span class="line">	<span class="keyword">switch</span> (key) {</span><br><span class="line">		<span class="keyword">case</span> GLUT_KEY_UP : deltaMove = <span class="number">0.5f</span>; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> GLUT_KEY_DOWN : deltaMove = <span class="number">-0.5f</span>; <span class="keyword">break</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">releaseKey</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>{</span><br><span class="line">	<span class="keyword">switch</span> (key) {</span><br><span class="line">		<span class="keyword">case</span> GLUT_KEY_UP :</span><br><span class="line">		<span class="keyword">case</span> GLUT_KEY_DOWN : deltaMove = <span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// -----------------------------------</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//FARE</span></span><br><span class="line"><span class="comment">// -----------------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mouseMove</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>{<span class="comment">// Bu sadece, sol düğme basılı olduğu zaman doğru olacak</span></span><br><span class="line">	<span class="keyword">if</span> (xOrigin &gt;= <span class="number">0</span>) {</span><br><span class="line">		<span class="comment">// deltaAngle’i güncelle</span></span><br><span class="line">		deltaAngle = (x - xOrigin) * <span class="number">0.001f</span>;</span><br><span class="line">		<span class="comment">// kamera'nın yönünü güncelle</span></span><br><span class="line">		lx = <span class="built_in">sin</span>(angle + deltaAngle);</span><br><span class="line">		lz = -<span class="built_in">cos</span>(angle + deltaAngle);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mouseButton</span><span class="params">(<span class="keyword">int</span> button, <span class="keyword">int</span> state, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>{</span><br><span class="line">	<span class="comment">// Sadece eğer sol düğme basılırsa harekete başla</span></span><br><span class="line">	<span class="keyword">if</span> (button == GLUT_LEFT_BUTTON) {</span><br><span class="line">		<span class="comment">// Düğme bırakıldığı zaman</span></span><br><span class="line">		<span class="keyword">if</span> (state == GLUT_UP) {</span><br><span class="line">			angle += deltaAngle;</span><br><span class="line">			xOrigin = <span class="number">-1</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">else</span> {<span class="comment">// state = GLUT_DOWN</span></span><br><span class="line">			xOrigin = x;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// -----------------------------------</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//MAIN</span></span><br><span class="line"><span class="comment">// -----------------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>{</span><br><span class="line">	<span class="comment">// GLUT’u ilkle ve pencereyi yarat</span></span><br><span class="line">	glutInit(&amp;argc, argv);</span><br><span class="line">	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);</span><br><span class="line">	glutInitWindowPosition(<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">	glutInitWindowSize(<span class="number">900</span>,<span class="number">900</span>);</span><br><span class="line">	glutCreateWindow(<span class="string">"Bezier Egrisi"</span>);</span><br><span class="line">	<span class="comment">// callbackleri kaydet</span></span><br><span class="line">	glutDisplayFunc(renderScene);</span><br><span class="line">	glutReshapeFunc(changeSize);</span><br><span class="line">	glutIdleFunc(renderScene);</span><br><span class="line">	glutIgnoreKeyRepeat(<span class="number">1</span>);</span><br><span class="line">	glutKeyboardFunc(processNormalKeys);</span><br><span class="line">	glutSpecialFunc(pressKey);</span><br><span class="line">	glutSpecialUpFunc(releaseKey);</span><br><span class="line">	<span class="comment">// iki yeni fonksiyon burada</span></span><br><span class="line">	glutMouseFunc(mouseButton);</span><br><span class="line">	glutMotionFunc(mouseMove);</span><br><span class="line">	<span class="comment">// OpenGL ilklemeleri</span></span><br><span class="line">	glEnable(GL_DEPTH_TEST);</span><br><span class="line">	glEnable(GL_CULL_FACE);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// GLUT olay işleme döngüsüne gir</span></span><br><span class="line">	glutMainLoop();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">İlgili Gönderiler</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\11\bezir-egrisi-uretimi-ve-opengl-glut-ile\" rel="bookmark">Bezir Eğrisi üretimi ( C ve OpenGL, glut ile )
+</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\08\kriptoloji\" rel="bookmark">Kriptoloji</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\05\asal-sayi-dogrulama\" rel="bookmark">Asal sayı doğrulama</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2016\04\3-tas-oyunu-icin-yapay-zeka\" rel="bookmark">3 taş oyunu için Yapay Zeka</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\tr\Yazilim\2015\08\bir-js-kodunun-sadece-6-farkli-karakter-ile-yazilmasi\" rel="bookmark">Bir JS Kodunun sadece 6 farklı karakter ile yazılması
+</a></div>
+    </li>
+  </ul>
+
+        
+
+  <div class="followme">
+    <p>Welcome to my other publishing channels</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="https://twitter.com/7farukcan">
+                <span class="icon">
+                  <i class="fa fa-twitter"></i>
+                </span>
+
+                <span class="label">Twitter</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tr/etiketler/yazilim/" rel="tag"># yazılım</a>
+              <a href="/tr/etiketler/cpp/" rel="tag"># cpp</a>
+              <a href="/tr/etiketler/bezier/" rel="tag"># bezier</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/tr/Yazilim/2015/11/bezir-egrisi-uretimi-ve-opengl-glut-ile/" rel="prev" title="Bezir Eğrisi üretimi ( C ve OpenGL, glut ile )
+">
+      <i class="fa fa-chevron-left"></i> Bezir Eğrisi üretimi ( C ve OpenGL, glut ile )
+
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/tr/Yazilim/2015/12/perceptron-egitimi-yapay-sinir-aglari/" rel="next" title="Perceptron Eğitimi &#8211; Yapay Sinir Ağları">
+      Perceptron Eğitimi &#8211; Yapay Sinir Ağları <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          İçindekiler
+        </li>
+        <li class="sidebar-nav-overview">
+          Genel Bakış
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Faruk CAN</p>
+  <div class="site-description" itemprop="description">Yazılım,felsefe ve edebiyat üzerine…</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/tr/arsiv/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">makale</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">kategori</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">etiket</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/farukcan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;farukcan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mail@farukcan.net" title="E-Mail → mailto:mail@farukcan.net"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/tr/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Faruk CAN</span>
+</div>
+  <div class="powered-by"><a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> motoru
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Tema – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/tr/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/tr/lib/velocity/velocity.min.js"></script>
+  <script src="/tr/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/tr/js/utils.js"></script>
+
+<script src="/tr/js/motion.js"></script>
+
+
+<script src="/tr/js/schemes/pisces.js"></script>
+
+
+<script src="/tr/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/tr/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
