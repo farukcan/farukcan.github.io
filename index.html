@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">48</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">49</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -209,6 +209,162 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
+    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2020/06/embedded-software-testing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Yazilim/2020/06/embedded-software-testing/" class="post-title-link" itemprop="url">Embedded Software Testing</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+              
+
+              <time title="Oluşturuldu: 10-06-2020 17:19:22 / Değiştirildi: 17:26:50" itemprop="dateCreated datePublished" datetime="2020-06-10T17:19:22+03:00">10-06-2020</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Gomulu-Yazilim-Testi"><a href="#Gomulu-Yazilim-Testi" class="headerlink" title="Gömülü Yazılım Testi"></a>Gömülü Yazılım Testi</h1><h2 id="Ozet"><a href="#Ozet" class="headerlink" title="Özet"></a>Özet</h2><p>Bu yazıda, “Gömülü yazılım nedir?”, “Gömülü yazılım testleri neden önemlidir?”, “Gömülü yazılım nasıl test edilir?”, “Gömülü Yazılımda TDD nasıl yapılır?”, “Standart yazılım testinden farkları nedir?” gibi soruların cevapları işlenmektedir.</p>
+<h2 id="Gomulu-Yazilim-Nedir"><a href="#Gomulu-Yazilim-Nedir" class="headerlink" title="Gömülü Yazılım Nedir?"></a>Gömülü Yazılım Nedir?</h2><p>Gömülü yazılımlar , gömülü sistem diye bilinen kontrol aygıtları ve makineleri için bilgisayar yazılımlarıdır.</p>
+<p>Gömülü sistem bir görev için atanmış, mekanik ve elektronik fonksiyonları yerine getiren işlemciden, hafızadan, girişler,çıkışlardan oluşan bir bilgisayar sistemidir.</p>
+<p>Endüstriyel robotlar, GPS alıcıları, Kameralar, Routerlar, Oyun konsolları, Fotokopi makineleri, Arabalar, Akıllı cihazlar, Saatler, Mikrodalga fırınları, Beyaz eşyalar, Trafik Işıkları, İHAlar, Telefonlar, Tabletler, Askeri cihazlar, Hava araçları bir gömülü sistemdir.</p>
+<p>Son istatistiklere göre tahminen dünyadaki işlemcilerin %90’ına yakını bir gömülü sistem parçasıdır.</p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled.png"></p>
+<h2 id="Gomulu-yazilim-testi-neden-onemlidir"><a href="#Gomulu-yazilim-testi-neden-onemlidir" class="headerlink" title="Gömülü yazılım testi neden önemlidir?"></a>Gömülü yazılım testi neden önemlidir?</h2><p>Gömülü sistemler hayatımızın her aşamasına girmiştir. Bunlardaki bir kusur, hata ve zayıflık can güvenliğimizi bile tehdit edebilecek seviyelere gelebilmektedir. Geçtiğimiz yıllarda, Chrysler adında birçok ünlü markaların sahibi olan bir firma, arabalarının uzaktan hacklenebilme zayıflığı yüzünden 1.4 milyon arabayı geri çağırmıştır. Bu arabalar yapılacak siber saldırılarla sürücüyü öldürecek ciddiyette riskler taşımaktadır.</p>
+<p>Yine geçtiğimiz yıllarda Toyotanın güç sisteminde hiçbir test ve belgeleme içermeyen spagetti kodlar ortaya çıkmıştır.</p>
+<p>İngiltere de satılan bir akıllı termostat sistemi, yazılımındaki bir bug sebebiyle müşterileri soğuğa mazur bırakmıştır. Bir can kaybı yaşanmasa da, bu bug bebekler için ölümcül olabilirdi.</p>
+<p>Bir Airbus A400M uçağı, gömülü sistemindeki bir bug sebebiyle düşmüştür. Bu boyutta bir uçağın askeri mühimmat taşıması ve yerleşim yerlerine düşmesi büyük can kayıplarına yol açabilirdi.</p>
+<p>Gömülü sistemler hastanelerde de kullanılmaktadır. Bir hastanın ilaç pompasını kontrol eden yazılımda bug bulunmuştur. Bu bug sebebiyle, hastalara ölümcül doz verilebilirdi.</p>
+<p>Ayrıca gömülü sistemler birbirine bağlı olduğu için birindeki kusur diğerlerini de etkileyebilir. Geçtiğimiz yıllarda bir WiFi destekli Akıllı Lambada bir güvenlik açığı bulunmuştur. Bu açık sayesinde hackerlar WiFi şifresine erişip, bütün evin ağına sızabilmekteydi.</p>
+<p>Uzay mekikleri ve roketlerde bir gömülü sistemdir. Geçtiğimiz yüzyıllarda gömülü yazılım kusurları sebebiyle, birçok uzay faciası yaşanmıştır.</p>
+<p>Bu sebeplerden dolayı, gömülü yazılım testi, standart yazılım testlerinden ayrılır. Çünkü bir hata, kusur, açık ve zayıflık bizi öldürebilir.</p>
+<p>Sektörlere göre gömülü yazılım test tekniği paper sayısı</p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%201.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%201.png"></p>
+<p><strong>Test Nedir?</strong><br>Test bugların, kusurların, noksanlıkların ve zayıflıkların bulunmasıdır.</p>
+<h2 id="Gomulu-yazilim-nasil-test-edilir"><a href="#Gomulu-yazilim-nasil-test-edilir" class="headerlink" title="Gömülü yazılım nasıl test edilir?"></a>Gömülü yazılım nasıl test edilir?</h2><p>Benzer bir çok yazılım test sisteminde olduğu gibi, gömülü yazılımda da test geliştirme döngüsünün ayrılmaz bir parçasıdır.</p>
+<p>Sağlamlık için hem fonksiyonel hemde fonksiyonel-olmayan nitelikler denetlenmelidir. </p>
+<p><strong>Fonksiyonel Nitelik Testi</strong>, yazılım yerine getirmesi gereken görevleri kusursuz bir şekilde yapmasıyla alakalıdır. Gömülü yazılımda fonksiyonellik fiziksel çevreye bağlı kontrol ediliyor olabilir. Bu çevresel girdilerin tanımı ve aralığı açık olmalıdır. </p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%202.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%202.png"></p>
+<p>Örnek kodda, fonksiyon çevresel bir girdi olan ivmeölçer ile kontrol edilmektedir. Fakat bu fonksiyonun ivmelenme girdilerinden biri “0” değeri aldığında bozulacaktır.</p>
+<p>Fiziksel çevre, rastgele oluşturulan sentetik girdiler ile simüle edilebilir. Fakat bu yaklaşımda ilişkili girdi sentezlemek başarısız olabilir. Bunun önüne geçmek için bu simülasyon evrimsel veya metaheuristic algoritmalar ile yapılabilmektedir.</p>
+<p>Gerekli olan durumlarda tüm olası girdiler test edilebilir. Fakat çok önemli olmayan fonksiyonlarda, bu yöntem maliyetlidir. (zaman açısından)</p>
+<p>Anlaşılacağı üzere girdi uzayı ve bu uzayın test edilebilirliği ve test yöntemleri büyü önem taşımaktadır.</p>
+<p><strong>Fonksiyonel Olmayan Nitelik Testi</strong> , bir gömülü yazılımın birkaç fonksiyonel olmayan nitelikleri vardır. Bunlardan en önemli ve temel nitelikler : zamanlama, enerji ve güvenirliktir. ( timing, energy, reliability)</p>
+<p><strong><em>Zaman Kısıtlamaları</em></strong>, yazılımın görevlerini kısıtlı zamanda tamamlanmasıyla alakalıdır. Gömülü yazılımların çoğu gerçek zamanlıdır. Tepki süreleri ve gecikmeleri çok önemlidir. Örneğin bir arabanın kaza anında darbe sensörlerindeki verilere göre hava yastıklarını doğru zamanda tetiklemesi hayati önem taşır. Bir kaza olduğunun doğrulanması, emin olunması, hesaplamaların yapılması ve çok geç olmadan hava yastığın tetiklenmesi, milisaniyeler düzeyinde kısıtlı bir zamanda yapılmalıdır.</p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%203.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%203.png"></p>
+<p>Dolasıyla bu süreleri optimize ederken, işlemcinin kod talimatları işleme süresi bilenerek yazılım geliştirilmelidir.</p>
+<p>Her bir fonksiyon için bir “zaman bütçesi” belirlenmeli ve o fonksiyon o zamanı aşmayacak şekilde optimize edilmelidir.</p>
+<p>İşlemciler, boolean operatorlerini çok hızlı işler, toplama işlemini çarpmaya göre daha hızlı yapar. Hafızaya erişmek bile zaman tüketir.</p>
+<p>İşlemci-hafıza arasında zaman kaybı olmaması için işlemcinin önbelleği kullanılmalıdır.</p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%204.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%204.png"></p>
+<p>Her bir fonksiyonun zamanını ölçen testler yazılmalıdır. </p>
+<p>Örneğin: <code>assert(time &lt;¼ 1ms)</code></p>
+<p>Her bir önemli fonksiyon için WCET (Worst-case execution time) yani en kötü senaryoda çalışma zamanı bilinmelidir.</p>
+<p><strong><em>Enerji Kısıtlamaları,</em></strong> zaman gibi gömülü yazılımda göz önünde bulundurulması gerek şeylerden biridir. Özellikle batarya kaynaklı sistemlerde önemlidir. Enerji tükenen işlemlerin, komponentlerin tüketim değerlerin testi yazılmalıdır. Zaman kısıtlamalarında olduğu gibi, enerji tüketimi içinde, WCEC (worst case energy consumption) yani en kötü enerji tüketim senaryosu ölçülmelidir.</p>
+<p><strong><em>Güvenirlik Kısıtlamaları,</em></strong> gömülü sistemler çoğu zaman fiziksel çevreyle etkileşim içindedir. Fiziksel çevreden sensörler ile güvenilebilir veriler elde etme çalışır. ( jiroskop , ivmeölçer, kablosuz iletişim vs. ) Ancak bu sensörlerden ve alıcılardan tutarsız veriler alınabilir. Ağda veri paketleri bozulabilir, kaybolabilir. Çoğu sensör kusursuz değildir ve hata payları vardır. Ayrıca daha tutarlı, kaliteli sensör ve alıcı sistemler pahalıdır. İşte burada bu çevresel verilerin kabul edilebilir tutarlılık seviyeleri belirlenmeli ve ona göre bir yazılım geliştirilmelidir.</p>
+<h2 id="Test-Metodolojilerin-Kategorizasyonu"><a href="#Test-Metodolojilerin-Kategorizasyonu" class="headerlink" title="Test Metodolojilerin Kategorizasyonu"></a>Test Metodolojilerin Kategorizasyonu</h2><p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%205.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%205.png"></p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%206.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%206.png"></p>
+<p><strong>Kara-kutu Soyutlaması</strong>: Sistem kara kutu gibi davranır. Test senaryoları örnekler ve rastgele girdiler ile oluşturulur. Sistemin gereksinimleri test edilir. Fonksiyonlar test edilir. Sık rastlanmayan uç senaryolar test edilemeyebilir.</p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%207.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%207.png"></p>
+<p><strong>Gri-Kutu Soyutlaması</strong>: Kara-kutu ve Beyaz-kutu yaklaşımın karışımı olarak düşebilir. Ancak sistem kara kutu gibi davranmış, bir model gibi temsil edilir. Bilgiyle alakalı özellikler test edilir. Testler arama uzayına göre oluşturulur.</p>
+<p><strong>Beyaz-kutu Soyutlaması</strong>: Bütün kaynak kodunun ve yollarının test edildiği bir işlemdir. Girdi uzayına göre testler yazılır. Daha çok sistem yapısı test edilir. Bu yöntemde eksik özellikler tespit edilemez.</p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%208.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%208.png"></p>
+<h2 id="Yapisal-olmayan-yaklasimlar"><a href="#Yapisal-olmayan-yaklasimlar" class="headerlink" title="Yapısal olmayan yaklaşımlar"></a>Yapısal olmayan yaklaşımlar</h2><p>Bu yöntemlerde bir düzel ve yapı yoktur. Testin kalitesi testi yapana bağlıdır. Yazılımın ne kadar test edildiğini bilmek zordur. Bu bu testin sonuçları objektif değildir. Çok taraflı ve görecelidir.</p>
+<h3 id="Smoke-Testing-Duman-testi"><a href="#Smoke-Testing-Duman-testi" class="headerlink" title="Smoke Testing (Duman testi)"></a>Smoke Testing (Duman testi)</h3><p>Yazılımın bir çok ana fonksiyonun çalıştırılıp duman çıkıp çıkmadığın test edilmesidir. (Bu daha hardwarelar için yapıldığı böyle tanımlanıyor. Tabi duman çıkıp çıkmaması değil, fonksiyonu yerine getirip getirmemesi test edilir)</p>
+<p>Geniş ve sığ bir yaklaşımdır</p>
+<h3 id="Exploratory-Testing-Kesifsel-yaklasim"><a href="#Exploratory-Testing-Kesifsel-yaklasim" class="headerlink" title="Exploratory Testing (Keşifsel yaklaşım)"></a>Exploratory Testing (Keşifsel yaklaşım)</h3><p>Uzman bir tester, sistemin açıklarını bulmayı sistemi alt etmeye çalışır.</p>
+<p>Learn(Öğren), Design(Tasarla), Execute(Uygula), Analysis(Sonuçları analiz et) diye 4 aşaması vardır.</p>
+<p>Bu çok dağınık bir yöntemdir.</p>
+<h2 id="Testing-Coverage"><a href="#Testing-Coverage" class="headerlink" title="Testing Coverage"></a>Testing Coverage</h2><p>Bir yazılımın, test senaryolarının yüzde kaçını başarıyla tamamladığını gösteren değerdir.</p>
+<p>%100 coverage, yazılım 100% test edilmiş olduğunu göstermez, çünkü test-caselere bağlıdır.</p>
+<p>Aynı şekilde 100% test edilmiş bir yazılım 100% güvenli de değildir.</p>
+<h2 id="Test-gelistirme-dongusu"><a href="#Test-gelistirme-dongusu" class="headerlink" title="Test geliştirme döngüsü"></a>Test geliştirme döngüsü</h2><h3 id="TDD-Test-Driven-Development"><a href="#TDD-Test-Driven-Development" class="headerlink" title="TDD (Test Driven Development)"></a>TDD (Test Driven Development)</h3><ol>
+<li>Testleri oluştur.</li>
+<li>Bütün testleri çalıştır, hatalı olanı gör.</li>
+<li>Ufak(!) değişiklikler ile hatayı düzelt.</li>
+<li>Testi yeniden çalıştır. Testin geçildiğini gör.</li>
+<li>Testleri refactor et. Fazlalıkları kaldır.</li>
+</ol>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%209.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%209.png"></p>
+<h3 id="TDD-ve-Gomulu-Yazilim"><a href="#TDD-ve-Gomulu-Yazilim" class="headerlink" title="TDD ve Gömülü Yazılım"></a>TDD ve Gömülü Yazılım</h3><ul>
+<li>Testlerde donanıma bağlılık vardır.</li>
+<li>Gerçek zamanlılıktan gelen zaman kısıtlamaları kısıtlamalar vardır.</li>
+<li>Sınırlı bir hafıza vardır. (Normal yazılama göre)</li>
+<li>Pek OOP(Nesneye yönelimli programlama) kullanamazsın.</li>
+</ul>
+<h3 id="V-model"><a href="#V-model" class="headerlink" title="V-model"></a>V-model</h3><p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%2010.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%2010.png"></p>
+<h3 id="Unit-Test"><a href="#Unit-Test" class="headerlink" title="Unit Test"></a>Unit Test</h3><p>Yazılımın her bir çalıştırılabilir fonksiyonunun test edilmesidir.</p>
+<h3 id="Integration-Test-Subsystem-Test"><a href="#Integration-Test-Subsystem-Test" class="headerlink" title="Integration Test (Subsystem Test)"></a>Integration Test (Subsystem Test)</h3><p>Yazılım her modülünün test edilmesi ve bu modüllerin uyumluluklarında test edilmesidir.</p>
+<h3 id="Software-Test-System-Test"><a href="#Software-Test-System-Test" class="headerlink" title="Software Test (System Test)"></a>Software Test (System Test)</h3><p>Sistemin bir bütün olarak test edilmesidir.</p>
+<h3 id="Acceptance-Test"><a href="#Acceptance-Test" class="headerlink" title="Acceptance Test"></a>Acceptance Test</h3><p>Müşteriyle beraber yapılan, yazılım kabul edilebilirliğinin testidir.</p>
+<h2 id="Emulated-Target-Board"><a href="#Emulated-Target-Board" class="headerlink" title="Emulated Target Board"></a>Emulated Target Board</h2><p>Gömülü yazılımlar test edilirken ve geliştirirken, sanal donanım kartları kullanılır. Çünkü bir hata yüzünden kart bozulabilir ve kullanılamaz hale gelebilir.</p>
+<p>Sanal kartlar yoksa, bu kartları mocklayan bir yazılım yazılarak testler çalıştırılabilir. Fakat bunu donanımdan bağımsız yazılım parçaları için yapmak gerekir.</p>
+<p><img src="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%2011.png" alt="Embedded%20Software%20Testing%208ce61930ef9e4ed194dae1d782f2b091/Untitled%2011.png"></p>
+<h1 id="Sunum"><a href="#Sunum" class="headerlink" title="Sunum"></a>Sunum</h1><p><a href="https://docs.google.com/presentation/d/1fFRhwwksglVttGgJCxI786ryusi4gHlaBj1FOQTgf8Y/edit?usp=drivesdk" target="_blank" rel="noopener">Embedded Software Testing Sunum</a></p>
+<h1 id="Kaynakca-ve-Ileri-Okuma"><a href="#Kaynakca-ve-Ileri-Okuma" class="headerlink" title="Kaynakça ve İleri Okuma"></a>Kaynakça ve İleri Okuma</h1><p><strong><a href="https://www.comp.nus.edu.sg/~abhik/pdf/TestingEmbeddedSoftware.pdf" target="_blank" rel="noopener">On Testing Embedded Software</a></strong><br>Abhijeet Banerjee<em>, Sudipta Chattopadhyay†<br>, Abhik Roychoudhury</em></p>
+<p><strong><a href="http://158.64.76.181/bitstream/10993/31857/1/What%20we%20know%20about%20testing%20embedded%20software.pdf" target="_blank" rel="noopener">What we know about testing embedded software?</a></strong><br>Vahid Garousi, Hacettepe University and University of Luxembourg<br>Michael Felderer, University of Innsbruck<br>Çağrı Murat Karapıçak, KUASOFT A.Ş.<br>Uğur Yılmaz, ASELSAN A.Ş.</p>
+<p><strong><a href="https://dl.acm.org/doi/pdf/10.1109/AST.2007.7?download=true" target="_blank" rel="noopener">Automating Embedded Software Testing on an Emulated Target Board</a></strong><br>Jooyoung Seo, Ahyoung Sung, Byoungju Choi, Sungbong Kanga<br>Dept. of Computer Science and Engg., Ewha University, Seoul, Korea<br>Mobile Solution, System LSI Division, Samsung Electronics Co., Ltd., Yongin, Koreaa<br>{jyseo, aysung}@ewhain.net, <a href="mailto:bjchoi@ewha.ac.kr">bjchoi@ewha.ac.kr</a>, <a href="mailto:osbkang@samsung.com">osbkang@samsung.com</a></p>
+<p><strong>Formal Testing Applied in Embedded Software</strong><br>Li Zhen,Liu Bin, Ma Ning and Yin Yongfeng<br>Dept. of System Engineering of Engineering Technology<br>Beihang University<br>No.37 Xueyuan Road, Beijing, China, 100191</p>
+<p><strong><a href="http://home.iitj.ac.in/~saurabh.heda/Papers/Research%20Papers/2011/Untitled%20Folder/Effectiveness%20of%20Real%20time%20Embedded%20software%20Testing%202011.pdf" target="_blank" rel="noopener">The Effectiveness of Real-time Embedded Software<br>Testing</a></strong><br>Bo Zhang,Xiangheng Shen<br>Changchun Institute of Optics, Fine Mechanics and Physics<br>Chinese Academy of Sciences<br>Changchun, China</p>
+<p><strong><a href="http://www.archive.ece.cmu.edu/~ece649/lectures/10_testing.pdf" target="_blank" rel="noopener">Embedded Software<br>Testing</a></strong><br>Distributed Embedded Systems<br>Philip Koopman<br>September 30, 2015</p>
+<p><strong><a href="https://www.researchgate.net/profile/Vahid_Garousi2/publication/254018254_Tool_Support_for_Automated_Traceability_of_TestCode_Artifacts_in_Embedded_Software_Systems/links/56ba643f08ae0a6bc9556b3d/Tool-Support-for-Automated-Traceability-of-Test-Code-Artifacts-in-Embedded-Software-Systems.pdf" target="_blank" rel="noopener">Tool Support for Automated Traceability of<br>Test/Code Artifacts in Embedded Software Systems</a></strong><br>Christian Wiederseiner, Vahid Garousi, Michael Smith<br>Department of Electrical and Computer Engineering, University of Calgary<br>2500 University Drive NW, Calgary, AB Canada T2N 1N4</p>
+<p><strong><a href="https://www.researchgate.net/profile/Marcin_Bajer/publication/279184152_Embedded_software_testing_in_research_environment_A_practical_guide_for_non-experts/links/558d62a808ae817475e63812/Embedded-software-testing-in-research-environment-A-practical-guide-for-non-experts.pdf" target="_blank" rel="noopener">Embedded Software Testing in Research<br>Environment</a></strong><br>Marcin Bajer, Marek Szlagor, Marek Wrzesniak<br>ABB Corporate Research Center<br>Krakow, Poland</p>
+<p><strong><a href="https://pdfs.semanticscholar.org/73e6/c4d62e1a3fb09ee72f77688013086e970779.pdf" target="_blank" rel="noopener">Effective Test Driven Development for Embedded Software</a></strong><br>Michael J. Karlesky, William I. Bereza, and Carl B. Erickson, PhD</p>
+<p><strong><a href="https://www.renaissancesoftware.net/files/articles/ESC-241Paper_Grenning-v1r1.pdf" target="_blank" rel="noopener">Test Driven Development for Embedded Software</a></strong><br>James Grenning<br>San Jose, April 2007, ESC Class# 241</p>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
     <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Psikoloji/2018/12/irade-gucu-uzerine-arastirmalar-ve-12-yontem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -241,7 +397,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -356,7 +512,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -477,7 +633,7 @@ Kılıç doğuştan sahip olmadığımız bir silahtır. Tertip ve düzene de do
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -569,7 +725,7 @@ Kılıç doğuştan sahip olmadığımız bir silahtır. Tertip ve düzene de do
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -666,7 +822,7 @@ git init
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -748,7 +904,7 @@ git init
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -824,7 +980,7 @@ git init
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -900,7 +1056,7 @@ git init
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -976,7 +1132,7 @@ git init
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
+                <time title="Değiştirildi: 10-06-2020 17:26:50" itemprop="dateModified" datetime="2020-06-10T17:26:50+03:00">10-06-2020</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1000,82 +1156,6 @@ git init
 
       
           <p>Dünya bizim etrafımızda dönmüyor. Aksine biz dünya ile beraber döne döne sürüklünüyoruz. Yolun nere gittiğini kimse bilmiyor. Kimse,bir kelebeğin kanat çırpmasının, dünyanın diğer ucunda fırtınalar yarattığını gözlemleyemedi. Kimse geleceği bilmiyor. Sadece <em>geleceğini</em> biliyor. Doğrusu, deterministik bir evrende mi yaşıyoruz, onu da bilmiyoruz. Aslında öğrenmek dediğimiz şey, sadece ne kadar çok şeyi bilmediğimizi öğrenmekten ibaret.</p>
-
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Felsefe/2016/12/doganin-kanunu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Felsefe/2016/12/doganin-kanunu/" class="post-title-link" itemprop="url">Doğanın kanunu</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 05-12-2016 14:52:52" itemprop="dateCreated datePublished" datetime="2016-12-05T14:52:52+03:00">05-12-2016</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Düzenleme</span>
-                <time title="Değiştirildi: 09-06-2020 19:19:58" itemprop="dateModified" datetime="2020-06-09T19:19:58+03:00">09-06-2020</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Felsefe/" itemprop="url" rel="index"><span itemprop="name">Felsefe</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Güçlü olan hayatta kalır ve insan doğaya hükmetmelidir. Bu laflar artık hezeyandan ibaret. Elimizde iki gerçek var. Birincisi, “uyumlu olan hayatta kalır”, güçlü olan değil. Karıncalar güçlü mü? Hayır, uyum ve birliktelik içerisindeler. Dinozorlar da en güçlü hayvanlardı, ama yok oldular. Çünkü uyumsuzlardı. Biz insanlarda ağaçlar,bitkiler ve hayvanlarla uyum içerisinde olduğumuz için hayattayız. Biz ağaçların meyvesini alıp, onların tohumunu ekeriz. İki tarafında kârlı olduğu ilişkidir. İkincisi, insan doğaya hükmedemez, doğaya uyum sağlar. Doğayı, asla yok edemeyeceğiz. Ağaçları kestiğimiz, ozon tabakasını deldiğimiz ve nükleer atık bıraktığımız için o bizi yok edecek. Ve telef olmuş türümüzün mezarının üstünde yeni çiçekler açıp, yeni canlılar gezinecek. (26/7/16)</p>
 
       
     </div>
@@ -1163,7 +1243,7 @@ git init
       <div class="site-state-item site-state-posts">
           <a href="/arsiv/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">makale</span>
         </a>
       </div>
@@ -1172,7 +1252,7 @@ git init
         <span class="site-state-item-name">kategori</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">79</span>
         <span class="site-state-item-name">etiket</span>
       </div>
   </nav>
