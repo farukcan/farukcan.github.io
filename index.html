@@ -139,7 +139,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">49</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">50</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -190,6 +190,91 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
+    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2020/06/bir-github-repositorysini-cdn-olarak-kullanmak/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Yazilim/2020/06/bir-github-repositorysini-cdn-olarak-kullanmak/" class="post-title-link" itemprop="url">Bir GitHub Repositorysini CDN olarak kullanmak</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 16-06-2020 13:05:22" itemprop="dateCreated datePublished" datetime="2020-06-16T13:05:22+03:00">16-06-2020</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="jsDelivy"><a href="#jsDelivy" class="headerlink" title="jsDelivy"></a>jsDelivy</h1><p>Bugün bir GitHub repositorysindeki dosyaları CDN (Content Delivery Network) olarak kullanmanın yolunu keşfettim.<br>Bu sayede resimleri github üzerine upload edip, CDN ile daha hızlı ve optimize<br>şekilde yüklenmesini sağlayabiliyoruz.</p>
+<p>Tabi bu sadece resimler için geçerli bir yöntem değil, aynı şekilde kendi kütüphanelerinizi ve kodlarınıza da<br>bu şekilde, dünyanın her yerinden hızlı erişime sunabilirsiniz.</p>
+<p>Siteniz zaten GitHub Pages üzerinde bulunuyorsa bile sitenize erişimde (arada CloudFlare gibi proxyler<br>kullanıyorsanız ) bir yavaşlık oluşacaktır. Kendi GitHub Pages sayfanızada da resimler, javasscript kodları için<br>bir CDN ile erişmek süreci hızlandıracaktır.</p>
+<h2 id="Avantajlari"><a href="#Avantajlari" class="headerlink" title="Avantajları"></a>Avantajları</h2><ul>
+<li>Hızlı erişim </li>
+<li>Dünyaya geneline yayılmış bir ağdan dosya alarak gecikmelerin azaltılması</li>
+<li>Kalıcılık (Dosyalar public bir repositoryde güvenli olarak saklanacak)</li>
+<li>Websitelerini veya webe bağlı uygulamaları hızlandırmak için birebir.</li>
+</ul>
+<h2 id="Kullanimi"><a href="#Kullanimi" class="headerlink" title="Kullanımı"></a>Kullanımı</h2><p>Bu şekilde GitHub reposundaki dosyanızı linkliyorsunuz. Kendisi otomatik olarak optimize ediyor.</p>
+<p><code>https://cdn.jsdelivr.net/gh/{github kullanıcı adı}/{repo kodu}/{dosyanın adresi}</code></p>
+<p>Tabi Branş ve versiyonda kullanabilirsiniz.</p>
+<p><code>https://cdn.jsdelivr.net/gh/{github kullanıcı adı}/{repo kodu}@{versiyon veya branş}/{dosyanın adresi}</code></p>
+<p>Sadece GitHub için değil, npm ve wordpress içinde kullanabilirsiniz : <a href="https://www.jsdelivr.com/?docs=gh" target="_blank" rel="noopener">https://www.jsdelivr.com/?docs=gh</a></p>
+<h3 id="Ornek"><a href="#Ornek" class="headerlink" title="Örnek"></a>Örnek</h3><p><a href="https://cdn.jsdelivr.net/gh/farukcan/farukcan.net/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/farukcan/farukcan.net/</a><br>(Repodaki bütün dosyaları listelemek için)</p>
+<p>(Tek bir resme erişim örneği)<br><a href="https://cdn.jsdelivr.net/gh/farukcan/farukcan.net@master/source/images/embedded/Untitled%204.png" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/farukcan/farukcan.net@master/source/images/embedded/Untitled%204.png</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; load any GitHub release, commit, or branch</span><br><span class="line">&#x2F;&#x2F; note: we recommend using npm for projects that support it</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; load jQuery v3.2.1</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3.2.1&#x2F;dist&#x2F;jquery.min.js</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; use a version range instead of a specific version</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3.2&#x2F;dist&#x2F;jquery.min.js</span><br><span class="line">https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; omit the version completely to get the latest one</span><br><span class="line">&#x2F;&#x2F; you should NOT use this in production</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;dist&#x2F;jquery.min.js</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; add &quot;.min&quot; to any JS&#x2F;CSS file to get a minified version</span><br><span class="line">&#x2F;&#x2F; if one doesn&#39;t exist, we&#39;ll generate it for you</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3.2.1&#x2F;src&#x2F;core.min.js</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; add &#x2F; at the end to get a directory listing</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -1027,75 +1112,6 @@ git init
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Felsefe/2016/12/kimse-bilmiyor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Felsefe/2016/12/kimse-bilmiyor/" class="post-title-link" itemprop="url">Kimse bilmiyor</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 05-12-2016 14:53:47" itemprop="dateCreated datePublished" datetime="2016-12-05T14:53:47+03:00">05-12-2016</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Felsefe/" itemprop="url" rel="index"><span itemprop="name">Felsefe</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Dünya bizim etrafımızda dönmüyor. Aksine biz dünya ile beraber döne döne sürüklünüyoruz. Yolun nere gittiğini kimse bilmiyor. Kimse,bir kelebeğin kanat çırpmasının, dünyanın diğer ucunda fırtınalar yarattığını gözlemleyemedi. Kimse geleceği bilmiyor. Sadece <em>geleceğini</em> biliyor. Doğrusu, deterministik bir evrende mi yaşıyoruz, onu da bilmiyoruz. Aslında öğrenmek dediğimiz şey, sadece ne kadar çok şeyi bilmediğimizi öğrenmekten ibaret.</p>
-
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1166,7 +1182,7 @@ git init
       <div class="site-state-item site-state-posts">
           <a href="/arsiv/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">makale</span>
         </a>
       </div>
@@ -1175,7 +1191,7 @@ git init
         <span class="site-state-item-name">kategori</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">etiket</span>
       </div>
   </nav>
