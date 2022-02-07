@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">46</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">45</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -200,81 +200,6 @@
             
 
   <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2015/08/html5-local-storage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Yazilim/2015/08/html5-local-storage/" class="post-title-link" itemprop="url">HTML5 Local Storage</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 19-08-2015 11:57:10" itemprop="dateCreated datePublished" datetime="2015-08-19T11:57:10+03:00">19-08-2015</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Cookieler, max 4KB’tır ve her istekte sunucuya tekrar gönderilir. Eğer kullanıcının browserda bir şey depolamak istersek ve buna sadece javascriptten erişmek istersek Local storage kullanabiliriz.</p>
-<p><strong>Veri yazma</strong></p>
-<pre>localStorage.setItem("key", "value");</pre>
-<p><strong>Veri okuma</strong></p>
-<pre>localStorage.getItem("key");</pre>
-<p><strong>Veri silme</strong></p>
-<pre>localStorage.removeItem("key");</pre>
-
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
   
   
@@ -1105,6 +1030,89 @@ popüler ve hızlı hash algoritmasıdır. Sözlük saldırısı ile geri dönd�
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
+    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2015/08/string-replace-fonksiyonlarin-filtreleme-zayifligi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Yazilim/2015/08/string-replace-fonksiyonlarin-filtreleme-zayifligi/" class="post-title-link" itemprop="url">string replace fonksiyonların filtreleme zayıflığı
+</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 12-08-2015 10:27:08" itemprop="dateCreated datePublished" datetime="2015-08-12T10:27:08+03:00">12-08-2015</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Bir çok programlama dilinde var olan, String Replace fonksiyonları, bir kelimenin kullanmasını engellemede çözüm yolu olduğu düşünülse bile bu fonksiyonun bir zayıflığı vardır.</p>
+<p>&nbsp;</p>
+<p>herhangi bir dilde stringi replace etmeyi deneyelim. (ö: php)</p>
+<pre>$id = str_replace('union', '', strtolower($_GET['id']));</pre>
+<p>Bu fonksiyon dışardan aldığı bütün union kelimeleri yok edecektir.</p>
+<pre>"union-union"  : "-"</pre>
+<p>fakat biz yinede union kelimesi gönderebiliriz.</p>
+<p>un<span style="color: #ff0000"><strong>union</strong></span>ion şeklindeki bir kullanımda fonksiyon, unionu yok edip yerine yine union bırakacaktır.</p>
+<pre>"ununionion" : "union"</pre>
+<p>&nbsp;</p>
+<p>Bu zayıflığı kapatmak için algoritma</p>
+<pre>while(kelime.deVarMı(silinecek)){
+kelime = kelime.replace(silinecek,"");
+}</pre>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -1175,7 +1183,7 @@ popüler ve hızlı hash algoritmasıdır. Sözlük saldırısı ile geri dönd�
       <div class="site-state-item site-state-posts">
           <a href="/arsiv/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">makale</span>
         </a>
       </div>
@@ -1184,7 +1192,7 @@ popüler ve hızlı hash algoritmasıdır. Sözlük saldırısı ile geri dönd�
         <span class="site-state-item-name">kategori</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-count">70</span>
         <span class="site-state-item-name">etiket</span>
       </div>
   </nav>
