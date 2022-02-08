@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">42</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">41</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -200,82 +200,6 @@
             
 
   <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2016/06/nesne-yonelimli-javascript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Yazilim/2016/06/nesne-yonelimli-javascript/" class="post-title-link" itemprop="url">Nesne Yönelimli Javascript</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 16-06-2016 23:06:22" itemprop="dateCreated datePublished" datetime="2016-06-16T23:06:22+03:00">16-06-2016</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Javascriptte, class(sınıf) yoktur. Onun yeri objeler vardır. Bu objeler class olarakta kullanılabilir.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Hayvan sınıfı değişkenleri ve constructor</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hayvan</span>(<span class="params">yaş</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.yaş = yaş;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Yeni hayvan"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hayvan sınıfı metodları</span></span><br><span class="line">Hayvan.prototype.büyü = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.yaş++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insan sınıfı değişkenleri ve constructor</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Insan</span>(<span class="params">yaş</span>)</span>&#123;</span><br><span class="line">	Hayvan.call(<span class="keyword">this</span>,yaş); <span class="comment">// super classın constructorünü çağır</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Yeni Insan"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kalıtım - prototipleri birleştir</span></span><br><span class="line">Insan.prototype = <span class="built_in">Object</span>.create(Hayvan.prototype);</span><br><span class="line">Insan.prototype.constructor = Insan;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insanı sınıfının kendine özgü metodları</span></span><br><span class="line">Insan.prototype.konuş = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Ben "</span>+<span class="keyword">this</span>.yaş+<span class="string">" yaşıdayım"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test</span></span><br><span class="line"><span class="keyword">var</span> ahmet = <span class="keyword">new</span> Insan(<span class="number">16</span>);</span><br><span class="line">ahmet.büyü();</span><br><span class="line">ahmet.konuş();</span><br><span class="line"><span class="built_in">console</span>.log(ahmet)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>Object.create fonksiyonu, bir objeyi kopyalamaz, sadece adresleme yaparak , yeni bir obje oluşturur.(delegasyon) Bunun sayesinde, kalıtım yaparken hafıza kullanımını azaltırız.</p>
-<p><strong>this</strong> deyimiyle javascriptte, sınıfın kendisi kastedilmez. Bir fonksiyonun hangi obje üzerinde çağrıldığı kastedilir.  <strong>obje.fonksiyon(); </strong>yani o fonksiyonun içinde this kullanıldıysa, noktanın solundaki ilk ifade olan <strong>obje </strong>,this’e karşılık düşer. Buda javascriptin önemli farklarında biridir.</p>
-<p>Bir fonksiyondan sonra <strong>call </strong>kullanılırak, o fonksiyonundaki this ifadesi, istediğimiz obje ile yer değiştirebiliriz.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obje1.fonksiyon(); <span class="comment">// burda this=obje1</span></span><br><span class="line">obje2.fonksiyon.call(obje3); <span class="comment">// burda this=obje3</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
   
   
@@ -980,6 +904,76 @@ olur.
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
+    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2015/10/asal-sayi-dogrulama/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Yazilim/2015/10/asal-sayi-dogrulama/" class="post-title-link" itemprop="url">Asal sayı doğrulama</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 11-10-2015 19:34:04" itemprop="dateCreated datePublished" datetime="2015-10-11T19:34:04+03:00">11-10-2015</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="/html/uploads/2015/05/prime-numbers-02.jpg"><img data-src="/html/uploads/2015/05/prime-numbers-02.jpg" alt="prime-numbers-02" width="446" height="250" class="alignnone size-full wp-image-208" /></a>Bir sayının asallığını en hızlı şekilde doğrulayan fonksiyondur</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (<span class="built_in">isNaN</span>(n) || !<span class="built_in">isFinite</span>(n) || n%<span class="number">1</span> || n&amp;lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">2</span>);</span><br><span class="line"> <span class="keyword">if</span> (n%<span class="number">3</span>==<span class="number">0</span>) <span class="keyword">return</span> (n==<span class="number">3</span>);</span><br><span class="line"> <span class="keyword">var</span> m=<span class="built_in">Math</span>.sqrt(n);</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">5</span>;i&amp;lt;=m;i+=<span class="number">6</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n%i==<span class="number">0</span>)     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (n%(i+<span class="number">2</span>)==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -1050,7 +1044,7 @@ olur.
       <div class="site-state-item site-state-posts">
           <a href="/arsiv/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">makale</span>
         </a>
       </div>
@@ -1059,7 +1053,7 @@ olur.
         <span class="site-state-item-name">kategori</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-count">66</span>
         <span class="site-state-item-name">etiket</span>
       </div>
   </nav>
