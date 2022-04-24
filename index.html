@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">41</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">42</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -200,6 +200,115 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
+    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2022/04/caprover-neden-cok-sevdim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Yazilim/2022/04/caprover-neden-cok-sevdim/" class="post-title-link" itemprop="url">Caprover 'i neden çok sevdim</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 24-04-2022 19:18:22" itemprop="dateCreated datePublished" datetime="2022-04-24T19:18:22+03:00">24-04-2022</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img data-src="https://pbs.twimg.com/media/EaflN1qWoAAYb94?format=jpg&name=4096x4096" alt="Caprover-tutorial"></p>
+<h1 id="Caprover"><a href="#Caprover" class="headerlink" title="Caprover"></a>Caprover</h1><p>Kısacası, bu teknolojiyi docker kullandığınız projelerinizde işinizi birkaç tıka indirgeyeceğiniz bir upgrade olarak düşünebilirsin.<br>Veritabanlarını, popüler docker applerini, wordpressi tek tık ile manage edebiliyorsunuz.<br>Digitalocean kullanıyorsanız hazır dropletinizi kullanıp kendi caprover vps’inizi kod kullanmadan oluşturabilisiniz.<br>Basit ve açık olması için listelerle anlatım yapacağım ;</p>
+<h4 id="Ne-ise-yariyor"><a href="#Ne-ise-yariyor" class="headerlink" title="Ne işe yarıyor?"></a>Ne işe yarıyor?</h4><ul>
+<li>One-click apps ile Tek tıkla redis,postgres,wordpress ve yüzlerce bilinen teknoloji için docker containeri oluşturabiliyorsunuz. (aka : deploy)</li>
+<li>Domain ve subdomain işlerini kendi hallediliyor; Nginx ve letcrpyt kullandığı için domain ve subdomain yönlendirme ve onları https e çevirme işini otomatik hallediyor. Sadece containeri dışa açılacak portu belirtmeniz ve domaini girmeniz yeterli. (hatta one-click apps ile bu da otomatik yapılıyor)</li>
+<li>Containerların kendi arasındaki dosya paylaşımı için tagları otomatik oluşturabiliyorsunuz.</li>
+<li>Containerları dışarı açmadan kendi aralarında kolayca bağlayabiliyorsunuz.</li>
+<li>Nginx ile beraber websocket uygulamalarda kullanabiliyorsunuz.</li>
+<li>Birden fazla instance ile load balancing yapabiliyorsunuz.</li>
+<li>Basic auth ile projelere şifreyle erişim koyabiliyorsunuz.</li>
+<li>Env değerlerini ve portları caproverin kendi arayüzü üzerinden kolayca değiştirebiliyorsunuz.</li>
+<li>Daha detaylı container yönetimi için caproveri içine Portainer de kurabilirsiniz. Fakat bu tooldan sonra portainere ve docker-cliye gerek duymadım.</li>
+<li>Github action ile git projeniz ile caproveri bağlayabiliyorsunuz.</li>
+<li>Deploymentlar için versiyon kontrol sistemi var. Güncel sürüm hatalıysa bir önceki sürüme (image) dönebiliyorsunız.</li>
+<li>İçine gömülü Netdata ile istatiksel bilgilere erişebiliyorsunuz.</li>
+<li>Cluster: Birden fazla caprover sunucusunu beraber birbiriyle uyumlu çalıştırabiliyorsunuz.</li>
+</ul>
+<p><img data-src="https://www.pedroalonso.net/static/5a972d3d7b95913d9fb2cb5981c84e97/fcda8/35.node.png" alt="Caprover-tutorial"></p>
+<h4 id="Deploy-yontemleri"><a href="#Deploy-yontemleri" class="headerlink" title="Deploy yöntemleri"></a>Deploy yöntemleri</h4><ul>
+<li>One-click apps: Redis, postgres, wordpress, directus gibi yüzlerce işinize yarar appı tek tıkla kuruyorsunuz.</li>
+<li>Deploy via ImageName : Direkt image adını girerek app oluşturabilirsiniz. (dockerhubdaki herşeyi kısacası)</li>
+<li>Deploy captain-definition file : Captain-definition dosyası ile caproverin önceden ayarladığı appleri toplu halde (mesela kendi app’ınız ve mongodb beraber) kurabiliyorsunuz</li>
+<li>Deploy plain Dockerfile: Dockerfile içeriğini caprover’e giriyorsunuz, ve proje kolayca deploy oluyor.</li>
+<li>Deploy from Github/Bitbucket/Gitlab: caprover reponuzu takip edip, captain dosyasına bakar otomatik deploy ediyor.</li>
+<li>Tarball: bir captain dosyası içeren bir .tar dosyasını caprovera upload ederek uygulama deploy ediyorsunuz.</li>
+<li>Official CLI: Bilgisayarın caprover cli’si kuruluyorsa, proje klasörünüze girip, “caprover deploy” diyerek projenizi ayağa kaldırabiliyorsunuz. </li>
+</ul>
+<p><img data-src="https://www.pedroalonso.net/static/657e9cf1f88948c6e31dcc2c2a00c34e/fcda8/06.wp-form.png" alt="Caprover-tutorial"></p>
+<h4 id="Benim-caprover-uzerindeki-applerim"><a href="#Benim-caprover-uzerindeki-applerim" class="headerlink" title="Benim caprover üzerindeki applerim:"></a>Benim caprover üzerindeki applerim:</h4><ul>
+<li>apprise : Bildirim sunucusu</li>
+<li>changedetection : bir web sayfasındaki değişimleri takip ediyor</li>
+<li>dozzle : docker containerlerinin loglarını erişmek için bir web arayüz.</li>
+<li>duplicati : veri yedekleme için harika bir çözüm.</li>
+<li>directus : “veritabanı ve api” kavramını tek bir sistem birleştiren harika bir şey.</li>
+<li>guacamole : ssh ve vnc sunucuları için güzel bir web arayüzü</li>
+<li>minio : amazon s3 alternatifi</li>
+<li>n8n : workflowlar ile otomasyon/integrasyon sistemi</li>
+<li>portainer : docker containerleri için bir web arayüzü</li>
+<li>wordpress : haltal olduğu için pek sevmesem de kendisini caprover üzerinden çok kolay blog oluşturabiliyorum.</li>
+</ul>
+<p>Resmi sitesi : <a href="https://caprover.com" target="_blank" rel="noopener">https://caprover.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -1071,82 +1180,6 @@ bir fonksiyonu bütün dizi elemanlarına uygulayarak yeni dizi oluşturur.
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2016/06/nesne-yonelimli-javascript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Yazilim/2016/06/nesne-yonelimli-javascript/" class="post-title-link" itemprop="url">Nesne Yönelimli Javascript</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 16-06-2016 23:06:22" itemprop="dateCreated datePublished" datetime="2016-06-16T23:06:22+03:00">16-06-2016</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Javascriptte, class(sınıf) yoktur. Onun yeri objeler vardır. Bu objeler class olarakta kullanılabilir.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Hayvan sınıfı değişkenleri ve constructor</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hayvan</span>(<span class="params">yaş</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.yaş = yaş;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Yeni hayvan"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hayvan sınıfı metodları</span></span><br><span class="line">Hayvan.prototype.büyü = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.yaş++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insan sınıfı değişkenleri ve constructor</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Insan</span>(<span class="params">yaş</span>)</span>&#123;</span><br><span class="line">	Hayvan.call(<span class="keyword">this</span>,yaş); <span class="comment">// super classın constructorünü çağır</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Yeni Insan"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kalıtım - prototipleri birleştir</span></span><br><span class="line">Insan.prototype = <span class="built_in">Object</span>.create(Hayvan.prototype);</span><br><span class="line">Insan.prototype.constructor = Insan;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insanı sınıfının kendine özgü metodları</span></span><br><span class="line">Insan.prototype.konuş = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Ben "</span>+<span class="keyword">this</span>.yaş+<span class="string">" yaşıdayım"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test</span></span><br><span class="line"><span class="keyword">var</span> ahmet = <span class="keyword">new</span> Insan(<span class="number">16</span>);</span><br><span class="line">ahmet.büyü();</span><br><span class="line">ahmet.konuş();</span><br><span class="line"><span class="built_in">console</span>.log(ahmet)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>Object.create fonksiyonu, bir objeyi kopyalamaz, sadece adresleme yaparak , yeni bir obje oluşturur.(delegasyon) Bunun sayesinde, kalıtım yaparken hafıza kullanımını azaltırız.</p>
-<p><strong>this</strong> deyimiyle javascriptte, sınıfın kendisi kastedilmez. Bir fonksiyonun hangi obje üzerinde çağrıldığı kastedilir.  <strong>obje.fonksiyon(); </strong>yani o fonksiyonun içinde this kullanıldıysa, noktanın solundaki ilk ifade olan <strong>obje </strong>,this’e karşılık düşer. Buda javascriptin önemli farklarında biridir.</p>
-<p>Bir fonksiyondan sonra <strong>call </strong>kullanılırak, o fonksiyonundaki this ifadesi, istediğimiz obje ile yer değiştirebiliriz.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obje1.fonksiyon(); <span class="comment">// burda this=obje1</span></span><br><span class="line">obje2.fonksiyon.call(obje3); <span class="comment">// burda this=obje3</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1217,7 +1250,7 @@ bir fonksiyonu bütün dizi elemanlarına uygulayarak yeni dizi oluşturur.
       <div class="site-state-item site-state-posts">
           <a href="/arsiv/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">makale</span>
         </a>
       </div>

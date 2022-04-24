@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">41</span></a>
+    <a href="/arsiv/" rel="section"><i class="fa fa-fw fa-archive"></i>Arşiv<span class="badge">42</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -200,6 +200,102 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
+    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2015/08/php-strcmp-fonksiyonu-acigi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Faruk CAN">
+      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Faruk CAN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Yazilim/2015/08/php-strcmp-fonksiyonu-acigi/" class="post-title-link" itemprop="url">PHP strcmp fonksiyonu açığı</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Yayın</span>
+
+              <time title="Oluşturuldu: 16-08-2015 11:42:49" itemprop="dateCreated datePublished" datetime="2015-08-16T11:42:49+03:00">16-08-2015</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Kategori</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>strcmp fonksiyonu iki değer eşit olması durumunda 0 (false) döndürür</p>
+<pre>strcmp("5", 5) =&gt; 0
+strcmp("15", 0xf) =&gt; 0
+strcmp(61529519452809720693702583126814, 61529519452809720000000000000000) =&gt; 0
+strcmp(NULL, false) =&gt; 0
+strcmp(NULL, "") =&gt; 0
+strcmp(NULL, 0) =&gt; -1
+strcmp(false, -1) =&gt; -2
+strcmp("15", NULL) =&gt; 2
+strcmp(NULL, "foo") =&gt; -3
+strcmp("foo", NULL) =&gt; 3
+strcmp("foo", false) =&gt; 3
+strcmp("foo", 0) =&gt; 1
+strcmp("foo", 5) =&gt; 1
+strcmp("foo", array()) =&gt; NULL + PHP Warning
+strcmp("foo", new stdClass) =&gt; NULL + PHP Warning
+strcmp(function(){}, "") =&gt; NULL + PHP Warning</pre>
+<p>Eğer sitenizde şöyle bir kullanım yaptıysanız.</p>
+<pre>if(!strcmp($_GET["ad"], "admin"))
+ echo "hg";
+else
+ echo "dg";</pre>
+<p>bu admin ile kıyaslama, GET-ad değişkeni <strong>array</strong>,null,class veya fonksiyon olduğu zamanda <strong>TRUE</strong> değer döndürür ve <strong>hg</strong>(hoşgeldin) mesajı basar.</p>
+<p>Şu şekilde bir kullanım ile get metodu üzerinde array gönderilebilirsiniz.</p>
+<pre>http://localhost/strcmp.php?ad[0]=omer</pre>
+<p>Eğer şifre ve kullanıcı adınızı bu şekilde doğruluyorsanız, birinin array göndererek admin panelinize erişmesi mümkündür.</p>
+<p>Onun için == ile kıyaslama yapınki sistem <strong>dg</strong> (defol git) değeri döndürsün.</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -1036,85 +1132,6 @@ Eğer tablo isimlerini ve kolonlarını öğrenmek isterseniz. Aşağıdaki sorg
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="tr">
-    <link itemprop="mainEntityOfPage" href="https://www.farukcan.net/Yazilim/2014/09/json-ana-ders/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Faruk CAN">
-      <meta itemprop="description" content="Yazılım,felsefe ve strateji üzerine…">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Faruk CAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Yazilim/2014/09/json-ana-ders/" class="post-title-link" itemprop="url">JSON - Ana Ders</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Yayın</span>
-
-              <time title="Oluşturuldu: 14-09-2014 15:23:08" itemprop="dateCreated datePublished" datetime="2014-09-14T15:23:08+03:00">14-09-2014</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">Kategori</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/kategoriler/Yazilim/" itemprop="url" rel="index"><span itemprop="name">Yazılım</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="/html/uploads/2014/09/json-logo.png"><img data-src="/html/uploads/2014/09/json-logo.png" alt="json-logo" width="690" height="330" class="alignnone size-full wp-image-220" /></a></p>
-<ul>
-    <li>
-        L&uuml;tfen b&uuml;y&uuml;ltmek i&ccedil;in tam ekran yapınız veya
-    </li>
-    <li>
-        Link : <a href="http://slides.com/farukcan/json-dersi" target="_blank" rel="noopener">http://slides.com/farukcan/json-dersi</a>
-    </li>
-</ul>
-
-<p>
-<iframe src="//slides.com/farukcan/json-dersi/embed?style=light" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1185,7 +1202,7 @@ Eğer tablo isimlerini ve kolonlarını öğrenmek isterseniz. Aşağıdaki sorg
       <div class="site-state-item site-state-posts">
           <a href="/arsiv/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">makale</span>
         </a>
       </div>

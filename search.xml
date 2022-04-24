@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Caprover &#39;i neden çok sevdim</title>
+    <url>//Yazilim/2022/04/caprover-neden-cok-sevdim/</url>
+    <content><![CDATA[<p><img data-src="https://pbs.twimg.com/media/EaflN1qWoAAYb94?format=jpg&name=4096x4096" alt="Caprover-tutorial"></p>
+<h1 id="Caprover"><a href="#Caprover" class="headerlink" title="Caprover"></a>Caprover</h1><p>Kısacası, bu teknolojiyi docker kullandığınız projelerinizde işinizi birkaç tıka indirgeyeceğiniz bir upgrade olarak düşünebilirsin.<br>Veritabanlarını, popüler docker applerini, wordpressi tek tık ile manage edebiliyorsunuz.<br>Digitalocean kullanıyorsanız hazır dropletinizi kullanıp kendi caprover vps’inizi kod kullanmadan oluşturabilisiniz.<br>Basit ve açık olması için listelerle anlatım yapacağım ;</p>
+<h4 id="Ne-ise-yariyor"><a href="#Ne-ise-yariyor" class="headerlink" title="Ne işe yarıyor?"></a>Ne işe yarıyor?</h4><ul>
+<li>One-click apps ile Tek tıkla redis,postgres,wordpress ve yüzlerce bilinen teknoloji için docker containeri oluşturabiliyorsunuz. (aka : deploy)</li>
+<li>Domain ve subdomain işlerini kendi hallediliyor; Nginx ve letcrpyt kullandığı için domain ve subdomain yönlendirme ve onları https e çevirme işini otomatik hallediyor. Sadece containeri dışa açılacak portu belirtmeniz ve domaini girmeniz yeterli. (hatta one-click apps ile bu da otomatik yapılıyor)</li>
+<li>Containerların kendi arasındaki dosya paylaşımı için tagları otomatik oluşturabiliyorsunuz.</li>
+<li>Containerları dışarı açmadan kendi aralarında kolayca bağlayabiliyorsunuz.</li>
+<li>Nginx ile beraber websocket uygulamalarda kullanabiliyorsunuz.</li>
+<li>Birden fazla instance ile load balancing yapabiliyorsunuz.</li>
+<li>Basic auth ile projelere şifreyle erişim koyabiliyorsunuz.</li>
+<li>Env değerlerini ve portları caproverin kendi arayüzü üzerinden kolayca değiştirebiliyorsunuz.</li>
+<li>Daha detaylı container yönetimi için caproveri içine Portainer de kurabilirsiniz. Fakat bu tooldan sonra portainere ve docker-cliye gerek duymadım.</li>
+<li>Github action ile git projeniz ile caproveri bağlayabiliyorsunuz.</li>
+<li>Deploymentlar için versiyon kontrol sistemi var. Güncel sürüm hatalıysa bir önceki sürüme (image) dönebiliyorsunız.</li>
+<li>İçine gömülü Netdata ile istatiksel bilgilere erişebiliyorsunuz.</li>
+<li>Cluster: Birden fazla caprover sunucusunu beraber birbiriyle uyumlu çalıştırabiliyorsunuz.</li>
+</ul>
+<p><img data-src="https://www.pedroalonso.net/static/5a972d3d7b95913d9fb2cb5981c84e97/fcda8/35.node.png" alt="Caprover-tutorial"></p>
+<h4 id="Deploy-yontemleri"><a href="#Deploy-yontemleri" class="headerlink" title="Deploy yöntemleri"></a>Deploy yöntemleri</h4><ul>
+<li>One-click apps: Redis, postgres, wordpress, directus gibi yüzlerce işinize yarar appı tek tıkla kuruyorsunuz.</li>
+<li>Deploy via ImageName : Direkt image adını girerek app oluşturabilirsiniz. (dockerhubdaki herşeyi kısacası)</li>
+<li>Deploy captain-definition file : Captain-definition dosyası ile caproverin önceden ayarladığı appleri toplu halde (mesela kendi app’ınız ve mongodb beraber) kurabiliyorsunuz</li>
+<li>Deploy plain Dockerfile: Dockerfile içeriğini caprover’e giriyorsunuz, ve proje kolayca deploy oluyor.</li>
+<li>Deploy from Github/Bitbucket/Gitlab: caprover reponuzu takip edip, captain dosyasına bakar otomatik deploy ediyor.</li>
+<li>Tarball: bir captain dosyası içeren bir .tar dosyasını caprovera upload ederek uygulama deploy ediyorsunuz.</li>
+<li>Official CLI: Bilgisayarın caprover cli’si kuruluyorsa, proje klasörünüze girip, “caprover deploy” diyerek projenizi ayağa kaldırabiliyorsunuz. </li>
+</ul>
+<p><img data-src="https://www.pedroalonso.net/static/657e9cf1f88948c6e31dcc2c2a00c34e/fcda8/06.wp-form.png" alt="Caprover-tutorial"></p>
+<h4 id="Benim-caprover-uzerindeki-applerim"><a href="#Benim-caprover-uzerindeki-applerim" class="headerlink" title="Benim caprover üzerindeki applerim:"></a>Benim caprover üzerindeki applerim:</h4><ul>
+<li>apprise : Bildirim sunucusu</li>
+<li>changedetection : bir web sayfasındaki değişimleri takip ediyor</li>
+<li>dozzle : docker containerlerinin loglarını erişmek için bir web arayüz.</li>
+<li>duplicati : veri yedekleme için harika bir çözüm.</li>
+<li>directus : “veritabanı ve api” kavramını tek bir sistem birleştiren harika bir şey.</li>
+<li>guacamole : ssh ve vnc sunucuları için güzel bir web arayüzü</li>
+<li>minio : amazon s3 alternatifi</li>
+<li>n8n : workflowlar ile otomasyon/integrasyon sistemi</li>
+<li>portainer : docker containerleri için bir web arayüzü</li>
+<li>wordpress : haltal olduğu için pek sevmesem de kendisini caprover üzerinden çok kolay blog oluşturabiliyorum.</li>
+</ul>
+<p>Resmi sitesi : <a href="https://caprover.com" target="_blank" rel="noopener">https://caprover.com</a></p>
+]]></content>
+      <categories>
+        <category>Yazılım</category>
+      </categories>
+      <tags>
+        <tag>yazılım</tag>
+        <tag>mühendislik</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mühendisliğin Unutulan Sırrı</title>
     <url>//Yazilim/2022/02/muhendisligin-unutulan-sirri/</url>
     <content><![CDATA[<p><img data-src="https://user-images.githubusercontent.com/11321842/152691275-ce9835b3-a68c-4322-974e-d66077b00ed2.jpg" alt="sven-mieke-fteR0e2BzKo-unsplash"></p>
@@ -761,9 +814,9 @@ ad hominem türkçede ado-minim diye telafuz edilir, sözlük anlamını "bir ki
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
         <tag>javascript</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -777,8 +830,8 @@ ad hominem türkçede ado-minim diye telafuz edilir, sözlük anlamını "bir ki
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -823,8 +876,8 @@ ad hominem türkçede ado-minim diye telafuz edilir, sözlük anlamını "bir ki
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -840,8 +893,8 @@ ad hominem türkçede ado-minim diye telafuz edilir, sözlük anlamını "bir ki
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -880,8 +933,8 @@ else
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -904,8 +957,8 @@ Form ve Form alıcı sayfaya bir captcha sistemi kurulur.
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -919,8 +972,8 @@ Form ve Form alıcı sayfaya bir captcha sistemi kurulur.
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -953,8 +1006,8 @@ Linuxda / dışında her karakter dosya isminde kullanılır. Bu sebeple böyle 
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -1031,8 +1084,8 @@ sunucunun dosya erişim açığı var mı kontrol eder
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -1121,8 +1174,8 @@ popüler ve hızlı hash algoritmasıdır. Sözlük saldırısı ile geri dönd�
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -1148,8 +1201,8 @@ kelime = kelime.replace(silinecek,"");
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
@@ -1176,8 +1229,8 @@ Eğer tablo isimlerini ve kolonlarını öğrenmek isterseniz. Aşağıdaki sorg
         <category>Yazılım</category>
       </categories>
       <tags>
-        <tag>sibergüvenlik</tag>
         <tag>yazılım</tag>
+        <tag>sibergüvenlik</tag>
       </tags>
   </entry>
   <entry>
